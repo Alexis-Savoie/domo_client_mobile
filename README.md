@@ -1,0 +1,1 @@
+Original template link : https://codecanyon.net/item/modern-chat-group-chatting-android-ios-app-template-html-css-ionic-3-woochat/23160170
