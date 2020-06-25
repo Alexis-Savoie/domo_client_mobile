@@ -1,0 +1,31 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-title>
+			<h2 class="d-flex"><img src="assets/imgs/logo-2.png" class="bounceIn animated delay_5">
+				<span class="app_title">{{'app_title' | translate}}</span>
+				<span class="end">02:55 left</span></h2>
+		</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<h1 class="ion-text-center">{{'verification' | translate}}</h1>
+	<p class="ion-text-center">{{'verification_massage' | translate}}</p>
+	<div class="form">
+		<ion-list lines="none" class="d-flex zoomIn animated delay_5">
+			<ion-item lines="none">
+				<ion-input class="ion-text-center" type="text" placeholder="" maxlength="1"></ion-input>
+			</ion-item>
+			<ion-item lines="none">
+				<ion-input class="ion-text-center" type="text" placeholder="" maxlength="1"></ion-input>
+			</ion-item>
+			<ion-item lines="none">
+				<ion-input class="ion-text-center" type="text" placeholder="" maxlength="1"></ion-input>
+			</ion-item>
+			<ion-item lines="none">
+				<ion-input class="ion-text-center" type="text" placeholder="" maxlength="1"></ion-input>
+			</ion-item>
+		</ion-list>
+		<ion-button slot="end" size="large" shape="round" class="btn" (click)="setprofile()">{{'confirm' | translate}}</ion-button>
+	</div>
+</ion-content>

@@ -1,0 +1,19 @@
+
+
+<ion-content>
+	<!--
+	<div class="logo-box ion-text-center">
+		<img src="assets/imgs/logo.png" class="animated zoomIn delay_2">
+	</div>
+	-->
+
+	<div class="form">
+		<ion-list lines="none" class="animated slideInUp delay_2">
+			<ion-item lines="none">
+				<h2 slot="start" class="ion-text-center">+1</h2>
+				<ion-input type="number" placeholder="{{'enter_phone_number' | translate}}"></ion-input> 
+				<ion-button slot="end" size="large" shape="round" class="btn"  (click)="verification()">{{'next' | translate}}</ion-button>
+			</ion-item>
+		</ion-list>
+	</div>
+</ion-content>

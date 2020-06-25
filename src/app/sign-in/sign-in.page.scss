@@ -1,0 +1,45 @@
+ion-content {
+	--background: var(--primary) !important;
+}
+
+.logo-box {
+	width: 140px;
+	margin: 0 auto;
+	margin-top: 80px;
+
+	img {
+		width: 115px;
+		text-align: center;
+	}
+}
+
+.form {
+	margin-top: 50px;
+
+	ion-list {
+		ion-item {
+			padding: 10px 0;
+			border-radius: 5px;
+
+			h2 {
+				margin: 0;
+				min-width: 55px;
+				font-size: 1rem;
+				font-weight: 500;
+			}
+
+			ion-input {
+				font-size: 1rem !important;
+			}
+
+			.button {
+				&.btn {
+					max-width: 95px;
+					height: 40px;
+					margin: 0 7px;
+				}
+			}
+
+		}
+	}
+}

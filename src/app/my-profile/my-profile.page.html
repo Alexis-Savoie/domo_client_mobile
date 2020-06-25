@@ -1,0 +1,49 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+		</ion-buttons>
+		<ion-title>{{'my_profile' | translate}}
+			<span class="ion-float-end" (click)="signin()">{{'logout' | translate}}</span>
+		</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content class="bg_color" fullscreen>
+
+	<div class="form">
+		<ion-list lines="none">
+			<ion-item class="profile">
+				<div class="profile_img_box animated zoomIn delay_1">
+					<div class="profile_img">
+						<img src="assets/imgs/profile_pic.png">
+					</div>
+					<ion-icon class="ion-text-center zmdi zmdi-camera"></ion-icon>
+				</div>
+			</ion-item>
+
+			<ion-item lines="none" class="status name animated slideInRight delay_1">
+				<ion-input type="name" class="ion-text-center" value="Samantha Smith" placeholder="{{'add_your_name' | translate}}"></ion-input>
+			</ion-item>
+
+			<ion-item lines="none" class="status animated slideInRight delay_2">
+				<ion-input type="text" class="ion-text-center" value="Hate is Heavy, Let it go!"></ion-input>
+			</ion-item>
+
+			<h2 class="animated slideInRight delay_3">{{'profile_info' | translate}}</h2>
+
+			<ion-item lines="none" class="animated slideInRight delay_4">
+				<ion-label position="stacked">{{'phone_number' | translate}}</ion-label>
+				<ion-input type="text" placeholder="{{'change_your_phone_number' | translate}}" value="+1 987 654 3210"></ion-input>
+			</ion-item>
+
+			<ion-item lines="none" class="animated slideInRight delay_5">
+				<ion-label position="stacked">{{'email_address' | translate}}</ion-label>
+				<ion-input type="email" placeholder="{{'enter_email_address' | translate}}" value="mymailaddress@mail.com"></ion-input>
+			</ion-item>
+		</ion-list>
+	</div>
+</ion-content>
+<ion-footer  class="ion-no-border animated slideInUp delay_3"> 
+		<ion-button size="large" shape="round" class="btn" >{{'save_profile' | translate}}</ion-button>
+</ion-footer>

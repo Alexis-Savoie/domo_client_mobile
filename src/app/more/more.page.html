@@ -1,0 +1,72 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-title>{{'more' | translate}} </ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content class="bg_color form" fullscreen>
+	<div *ngIf="config.showBuyPromt" (click)="buyAppAction()"  class="buy_this_app">
+		<h2>
+			<ion-icon class="zmdi zmdi-shopping-cart"></ion-icon>
+			{{"buy_this_app" | translate}}
+		</h2>
+	</div>
+
+	<ion-list lines="none">
+		<ion-item class="profile">
+			<div class="item_inner">
+				<div class="profile_img_box animated zoomIn delay_1" (click)="myprofile()">
+					<div class="profile_img">
+						<img src="assets/imgs/8.png">
+					</div>
+				</div>
+				<h1 class="ion-text-center" (click)="myprofile()">Samantha Smith</h1>
+				<h4 class="ion-text-center" (click)="myprofile()">Hate is Heavy, Let it go!</h4>
+			</div>
+		</ion-item>
+		<div class="settings">
+			<h2>{{'settings' | translate}}</h2>
+
+			<ion-item class="animated slideInRight delay_1" (click)="privacy()">
+				<div class="item_inner d-flex">
+					<ion-icon class="zmdi zmdi-lock ion-text-start">lock</ion-icon>
+					<h3>{{'privacy_setting' | translate}}</h3>
+				</div>
+			</ion-item>
+
+			<ion-item class="animated slideInRight delay_2" (click)="chatsetting()">
+				<div class="item_inner d-flex">
+					<ion-icon class="zmdi zmdi-comment-more ion-text-start"></ion-icon>
+					<h3>{{'chat_setting' | translate}}</h3>
+				</div>
+			</ion-item>
+
+			<ion-item class="animated slideInRight delay_3" (click)="change_language()">
+				<div class="item_inner d-flex">
+					<ion-icon class="zmdi zmdi-globe ion-text-start"></ion-icon>
+					<h3>{{'change_language' | translate}}</h3>
+				</div>
+			</ion-item>
+
+			<ion-item class="animated slideInRight delay_4" (click)="notificationsetting()">
+				<div class="item_inner d-flex">
+					<ion-icon class="zmdi zmdi-notifications-active ion-text-start"></ion-icon>
+					<h3>{{'notification_setting' | translate}}</h3>
+				</div>
+			</ion-item>
+
+			<ion-item class="animated slideInRight delay_5">
+				<div class="item_inner d-flex">
+					<ion-icon class="zmdi zmdi-help ion-text-start"></ion-icon>
+					<h3>{{'need_help' | translate}}</h3>
+				</div>
+			</ion-item>
+		</div>
+	</ion-list>
+
+	<ion-fab class="animated zoomIn delay_4" vertical="bottom" horizontal="end" slot="fixed">
+		<ion-fab-button>
+			<ion-icon class="zmdi zmdi-share"></ion-icon>
+		</ion-fab-button>
+	</ion-fab>
+</ion-content>

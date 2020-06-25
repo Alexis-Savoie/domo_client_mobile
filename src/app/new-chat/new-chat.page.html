@@ -1,0 +1,224 @@
+ <ion-header>
+ 	<ion-toolbar>
+ 		<ion-buttons slot="start">
+			<ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+		</ion-buttons>
+ 		<ion-title>{{'new_chats' | translate}}
+ 			<span class="ion-float-end">
+ 				<ion-icon class="zmdi zmdi-search ion-text-start"></ion-icon>
+ 				<ion-icon class="zmdi zmdi-refresh-alt ion-text-end"></ion-icon>
+ 			</span>
+ 		</ion-title>
+ 	</ion-toolbar>
+ </ion-header>
+
+ <ion-content fullscreen>
+ 	<ion-list lines="none" class="">
+
+ 		<ion-item class="create animated slideInRight delay_1" (click)="create_group()">
+ 			<div class="item_inner d-flex">
+ 				<div class="profile_img_box">
+ 					<div class="profile_img">
+ 						<ion-icon class="zmdi zmdi-accounts-add ion-text-center"> </ion-icon>
+ 					</div>
+ 				</div>
+ 				<div class="text-box">
+ 					<h2 class="d-flex">{{'create_new_group' | translate}}</h2>
+ 				</div>
+ 			</div>
+ 		</ion-item>
+ 	</ion-list>
+
+ 	<h3>{{'select_contact_to_start_new_chat' | translate}}</h3>
+
+
+ 	<ion-row>
+ 		<ion-col size="2">
+ 			<h4>A</h4>
+ 		</ion-col>
+ 		<ion-col size="10">
+ 			<ion-list lines="none" class="">
+ 				<ion-item class="active animated slideInRight delay_1" (click)="chatting()">
+ 					<div class="item_inner d-flex">
+ 						<div class="profile_img_box">
+ 							<div class="profile_img">
+ 								<img src="assets/imgs/1.png">
+ 							</div>
+ 						</div>
+ 						<div class="text-box">
+ 							<h2 class="d-flex"><span>Aditi Patel</span> </h2>
+ 							<p class="d-flex"><span class="message">Travrlling with Nature</span></p>
+ 						</div>
+ 					</div>
+ 				</ion-item>
+ 				<ion-item class=" animated slideInRight delay_2" (click)="chatting()">
+ 					<div class="item_inner d-flex">
+ 						<div class="profile_img_box">
+ 							<div class="profile_img">
+ 								<img src="assets/imgs/5.png">
+ 							</div>
+ 						</div>
+ 						<div class="text-box">
+ 							<h2 class="d-flex"><span>Ammy Drack</span></h2>
+ 							<p class="d-flex"><span class="message">Feeling Awesome</span>
+ 							</p>
+ 						</div>
+ 					</div>
+ 				</ion-item>
+ 				<ion-item class="active animated slideInRight delay_3" (click)="chatting()">
+ 					<div class="item_inner d-flex">
+ 						<div class="profile_img_box">
+ 							<div class="profile_img">
+ 								<img src="assets/imgs/3.png">
+ 							</div>
+ 						</div>
+ 						<div class="text-box">
+ 							<h2 class="d-flex"><span>Andy Reslow</span> </h2>
+ 							<p class="d-flex">
+ 								<span class="message">Minding own business</span>
+ 							</p>
+ 						</div>
+ 					</div>
+ 				</ion-item>
+ 				<ion-item class="animated slideInRight delay_4" (click)="chatting()">
+ 					<div class="item_inner d-flex">
+ 						<div class="profile_img_box">
+ 							<div class="profile_img">
+ 								<img src="assets/imgs/2.png">
+ 							</div>
+ 						</div>
+ 						<div class="text-box">
+ 							<h2 class="d-flex"><span>Azler Hopson</span></h2>
+ 							<p class="d-flex"><span class="message">Busy</span>
+ 							</p>
+ 						</div>
+ 					</div>
+ 				</ion-item>
+ 				<ion-item class="active animated slideInRight delay_5" (click)="chatting()">
+ 					<div class="item_inner d-flex">
+ 						<div class="profile_img_box">
+ 							<div class="profile_img">
+ 								<img src="assets/imgs/6.png">
+ 							</div>
+ 						</div>
+ 						<div class="text-box">
+ 							<h2 class="d-flex"><span>Andy Reslow</span> </h2>
+ 							<p class="d-flex"><span class="message">About to reach New York</span>
+ 							</p>
+ 						</div>
+ 					</div>
+ 				</ion-item>
+ 				<ion-item class="active animated slideInRight delay_6" (click)="chatting()">
+ 					<div class="item_inner d-flex">
+ 						<div class="profile_img_box">
+ 							<div class="profile_img">
+ 								<img src="assets/imgs/8.png">
+ 							</div>
+ 						</div>
+ 						<div class="text-box">
+ 							<h2 class="d-flex"><span>Ammy Drack</span> </h2>
+ 							<p class="d-flex"><span class="message">Gyming</span>
+ 							</p>
+ 						</div>
+ 					</div>
+ 				</ion-item>
+ 			</ion-list>
+ 		</ion-col>
+ 	</ion-row>
+
+
+ 	<ion-row>
+ 		<ion-col size="2">
+ 			<h4>B</h4>
+ 		</ion-col>
+ 		<ion-col size="10">
+ 			<ion-list lines="none" class="">
+ 				<ion-item class="active animated slideInRight delay_9" (click)="chatting()">
+ 					<div class="item_inner d-flex">
+ 						<div class="profile_img_box">
+ 							<div class="profile_img">
+ 								<img src="assets/imgs/1.png">
+ 							</div>
+ 						</div>
+ 						<div class="text-box">
+ 							<h2 class="d-flex"><span>Balton Smith</span> </h2>
+ 							<p class="d-flex"><span class="message">About to reach New York</span></p>
+ 						</div>
+ 					</div>
+ 				</ion-item>
+ 				<ion-item class=" animated slideInRight delay_10" (click)="chatting()">
+ 					<div class="item_inner d-flex">
+ 						<div class="profile_img_box">
+ 							<div class="profile_img">
+ 								<img src="assets/imgs/5.png">
+ 							</div>
+ 						</div>
+ 						<div class="text-box">
+ 							<h2 class="d-flex"><span>Byron kenny</span></h2>
+ 							<p class="d-flex"><span class="message">Gyming</span>
+ 							</p>
+ 						</div>
+ 					</div>
+ 				</ion-item>
+ 				<ion-item class="active animated slideInRight delay_11" (click)="chatting()">
+ 					<div class="item_inner d-flex">
+ 						<div class="profile_img_box">
+ 							<div class="profile_img">
+ 								<img src="assets/imgs/3.png">
+ 							</div>
+ 						</div>
+ 						<div class="text-box">
+ 							<h2 class="d-flex"><span>Brinley</span> </h2>
+ 							<p class="d-flex">
+ 								<ion-icon class="ion-text-start zmdi zmdi-attachment"></ion-icon>
+ 								<span class="message">Yes, I am Coming.</span>
+ 							</p>
+ 						</div>
+ 					</div>
+ 				</ion-item>
+ 				<ion-item class="animated slideInRight delay_12" (click)="chatting()">
+ 					<div class="item_inner d-flex">
+ 						<div class="profile_img_box">
+ 							<div class="profile_img">
+ 								<img src="assets/imgs/2.png">
+ 							</div>
+ 						</div>
+ 						<div class="text-box">
+ 							<h2 class="d-flex"><span>Brooklynn</span></h2>
+ 							<p class="d-flex"><span class="message">Busy</span>
+ 							</p>
+ 						</div>
+ 					</div>
+ 				</ion-item>
+ 				<ion-item class="active animated slideInRight delay_1" (click)="chatting()">
+ 					<div class="item_inner d-flex">
+ 						<div class="profile_img_box">
+ 							<div class="profile_img">
+ 								<img src="assets/imgs/6.png">
+ 							</div>
+ 						</div>
+ 						<div class="text-box">
+ 							<h2 class="d-flex"><span>Brenda</span> </h2>
+ 							<p class="d-flex"><span class="message">About to reach New York</span>
+ 							</p>
+ 						</div>
+ 					</div>
+ 				</ion-item>
+ 				<ion-item class="active animated slideInRight delay_2" (click)="chatting()">
+ 					<div class="item_inner d-flex">
+ 						<div class="profile_img_box">
+ 							<div class="profile_img">
+ 								<img src="assets/imgs/8.png">
+ 							</div>
+ 						</div>
+ 						<div class="text-box">
+ 							<h2 class="d-flex"><span>Bernadette</span> </h2>
+ 							<p class="d-flex"><span class="message">Gyming</span>
+ 							</p>
+ 						</div>
+ 					</div>
+ 				</ion-item>
+ 			</ion-list>
+ 		</ion-col>
+ 	</ion-row>
+ </ion-content>

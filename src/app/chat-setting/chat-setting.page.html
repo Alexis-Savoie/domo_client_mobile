@@ -1,0 +1,36 @@
+<ion-header>
+	<ion-toolbar>
+	<ion-buttons slot="start">
+			<ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+		</ion-buttons>
+		<ion-title>{{'chat_setting' | translate}}</ion-title>
+	</ion-toolbar>
+</ion-header>
+<ion-content class="bg_color">
+	<div class="form">
+		<ion-list lines="none">
+			<h2>{{'media_auto_download' | translate}}</h2>
+			<ion-item class="animated slideInRight delay_1">
+				<ion-label position="stacked">{{'when_using_mobile_data' | translate}}</ion-label>
+				<ion-select interface="action-sheet"  [(ngModel)]="when_using_mobile_data">
+					<ion-select-option value="no_media">{{'no_media' | translate}}</ion-select-option>
+					<ion-select-option value="picture">{{'picture' | translate}}</ion-select-option>
+					<ion-select-option value="audio">{{'audio' | translate}}</ion-select-option>
+					<ion-select-option value="video">{{'video' | translate}}</ion-select-option>
+					<ion-select-option value="all">{{'all' | translate}}</ion-select-option>
+				</ion-select>
+			</ion-item>
+
+			<ion-item class="animated slideInRight delay_2">
+				<ion-label position="stacked">{{'when_using_wifi_network' | translate}}</ion-label>
+				<ion-select interface="action-sheet"  [(ngModel)]="when_using_wifi_network">
+					<ion-select-option value="no_media">{{'no_media' | translate}}</ion-select-option>
+					<ion-select-option value="picture">{{'picture' | translate}}</ion-select-option>
+					<ion-select-option value="audio">{{'audio' | translate}}</ion-select-option>
+					<ion-select-option value="video">{{'video' | translate}}</ion-select-option>
+					<ion-select-option value="all">{{'all' | translate}}</ion-select-option>
+				</ion-select>
+			</ion-item>
+		</ion-list>
+	</div>
+</ion-content>

@@ -1,0 +1,45 @@
+ <ion-header>
+ 	<ion-toolbar>
+ 		<ion-buttons slot="start">
+			<ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+		</ion-buttons>
+ 		<ion-title>{{'notification_setting' | translate}}</ion-title>
+ 	</ion-toolbar>
+ </ion-header>
+
+ <ion-content class="bg_color">
+ 	<div class="form">
+ 		<ion-list lines="none">
+ 			<h2>{{'set_notification_alert' | translate}}</h2>
+
+ 			<ion-item class="animated slideInRight delay_1">
+ 				<ion-label position="stacked">{{'when_personal_message_alert' | translate}}</ion-label>
+ 				<ion-select interface="action-sheet" [(ngModel)]="when_personal_message_alert">
+ 					<ion-select-option value="yes">{{'yes' | translate}}</ion-select-option>
+ 					<ion-select-option value="no">{{'no' | translate}}</ion-select-option>
+ 				</ion-select>
+ 			</ion-item>
+ 			<ion-item class="animated slideInRight delay_2">
+ 				<ion-label position="stacked">{{'when_group_message_receive' | translate}}</ion-label>
+ 				<ion-select interface="action-sheet" [(ngModel)]="when_group_message_receive">
+ 					<ion-select-option value="yes">{{'yes' | translate}}</ion-select-option>
+ 					<ion-select-option value="no">{{'no' | translate}}</ion-select-option>
+ 				</ion-select>
+ 			</ion-item>
+ 			<ion-item class="animated slideInRight delay_3">
+ 				<ion-label position="stacked">{{'when_voice_call_receive' | translate}}</ion-label>
+ 				<ion-select interface="action-sheet" [(ngModel)]="when_voice_call_receive">
+ 					<ion-select-option value="yes">{{'yes' | translate}}</ion-select-option>
+ 					<ion-select-option value="no">{{'no' | translate}}</ion-select-option>
+ 				</ion-select>
+ 			</ion-item>
+ 			<ion-item class="animated slideInRight delay_4">
+ 				<ion-label position="stacked">{{'when_video_call_receive' | translate}}</ion-label>
+ 				<ion-select interface="action-sheet" [(ngModel)]="when_video_call_receive">
+ 					<ion-select-option value="yes">{{'yes' | translate}}</ion-select-option>
+ 					<ion-select-option value="no">{{'no' | translate}}</ion-select-option>
+ 				</ion-select>
+ 			</ion-item>
+ 		</ion-list>
+ 	</div>
+ </ion-content>

@@ -1,0 +1,230 @@
+ <ion-header>
+ 	<ion-toolbar>
+ 		<ion-buttons slot="start">
+			<ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+		</ion-buttons>
+ 		<ion-title>{{'call_logs' | translate}}
+ 			<ion-icon class="ion-float-end zmdi zmdi-search ion-text-end"></ion-icon>
+ 		</ion-title>
+ 	</ion-toolbar>
+ </ion-header>
+
+ <ion-content fullscreen>
+ 	<ion-list lines="none" class="">
+ 		<ion-item class="outgoing animated slideInRight delay_1" (click)="profileinfo()">
+ 			<div class="item_inner d-flex">
+ 				<div class="profile_img_box">
+ 					<div class="profile_img">
+ 						<img src="assets/imgs/1.png">
+ 					</div>
+ 				</div>
+ 				<div class="text-box">
+ 					<h2 class="d-flex"><span>Aditi Patel</span> </h2>
+ 					<p class="d-flex">
+ 						<ion-icon class="zmdi zmdi-arrow-right-top ion-text-start"></ion-icon>
+ 						<span class="message"> June 12, 12:31 pm</span>
+ 					</p>
+ 				</div>
+ 				<ion-icon class=" end zmdi zmdi-phone ion-text-end"></ion-icon>
+ 			</div>
+ 		</ion-item>
+ 		<ion-item class="incoming animated slideInRight delay_2" (click)="profileinfo()">
+ 			<div class="item_inner d-flex">
+ 				<div class="profile_img_box">
+ 					<div class="profile_img">
+ 						<img src="assets/imgs/5.png">
+ 					</div>
+ 				</div>
+ 				<div class="text-box">
+ 					<h2 class="d-flex"><span>Ammy Drack</span></h2>
+ 					<p class="d-flex">
+ 						<ion-icon class="zmdi zmdi-arrow-left-bottom ion-text-start"></ion-icon>
+ 						<span class="message">June 12, 12:31 pm</span>
+ 					</p>
+ 				</div>
+
+ 				<ion-icon class="end zmdi zmdi-videocam ion-text-end"></ion-icon>
+ 			</div>
+ 		</ion-item>
+ 		<ion-item class="missed animated slideInRight delay_3" (click)="profileinfo()">
+ 			<div class="item_inner d-flex">
+ 				<div class="profile_img_box">
+ 					<div class="profile_img">
+ 						<img src="assets/imgs/3.png">
+ 					</div>
+ 				</div>
+ 				<div class="text-box">
+ 					<h2 class="d-flex"><span>Andy Reslow</span> </h2>
+ 					<p class="d-flex">
+ 						<ion-icon class="zmdi zmdi-arrow-missed ion-text-start"></ion-icon>
+ 						<span class="message">June 12, 12:31 pm</span>
+ 					</p>
+ 				</div>
+ 				<ion-icon class="end zmdi zmdi-videocam ion-text-end"></ion-icon>
+ 			</div>
+ 		</ion-item>
+ 		<ion-item class="outgoing animated slideInRight delay_4" (click)="profileinfo()">
+ 			<div class="item_inner d-flex">
+ 				<div class="profile_img_box">
+ 					<div class="profile_img">
+ 						<img src="assets/imgs/2.png">
+ 					</div>
+ 				</div>
+ 				<div class="text-box">
+ 					<h2 class="d-flex">
+ 					
+ 						<span>Azler Hopson</span>
+ 					</h2>
+ 					<p class="d-flex"><span class="message">
+							<ion-icon class="zmdi zmdi-arrow-right-top ion-text-start"></ion-icon>
+						June 12, 12:31 pm</span>
+ 					</p>
+ 				</div>
+ 				<ion-icon class="end zmdi zmdi-videocam ion-text-end"></ion-icon>
+ 			</div>
+ 		</ion-item>
+ 		<ion-item class="incoming animated slideInRight delay_5" (click)="profileinfo()">
+ 			<div class="item_inner d-flex">
+ 				<div class="profile_img_box">
+ 					<div class="profile_img">
+ 						<img src="assets/imgs/6.png">
+ 					</div>
+ 				</div>
+ 				<div class="text-box">
+ 					<h2 class="d-flex"><span>Andy Reslow</span> </h2>
+ 					<p class="d-flex">
+ 						<ion-icon class="zmdi zmdi-arrow-left-bottom ion-text-start"></ion-icon>
+ 						<span class="message">June 12, 12:31 pm</span>
+ 					</p>
+ 				</div>
+ 				<ion-icon class="end zmdi zmdi-phone ion-text-end"></ion-icon>
+ 			</div>
+ 		</ion-item>
+ 		<ion-item class="incoming animated slideInRight delay_6" (click)="profileinfo()">
+ 			<div class="item_inner d-flex">
+ 				<div class="profile_img_box">
+ 					<div class="profile_img">
+ 						<img src="assets/imgs/8.png">
+ 					</div>
+ 				</div>
+ 				<div class="text-box">
+ 					<h2 class="d-flex"><span>Ammy Drack</span> </h2>
+ 					<p class="d-flex">
+ 						<ion-icon class="zmdi zmdi-arrow-left-bottom ion-text-start"></ion-icon>
+ 						<span class="message">June 12, 12:31 pm</span>
+ 					</p>
+ 				</div>
+ 				<ion-icon class="end zmdi zmdi-videocam ion-text-end"></ion-icon>
+ 			</div>
+ 		</ion-item>
+ 		<ion-item class="missed animated slideInRight delay_7" (click)="profileinfo()">
+ 			<div class="item_inner d-flex">
+ 				<div class="profile_img_box">
+ 					<div class="profile_img">
+ 						<img src="assets/imgs/1.png">
+ 					</div>
+ 				</div>
+ 				<div class="text-box">
+ 					<h2 class="d-flex"><span>Balton Smith</span> </h2>
+ 					<p class="d-flex">
+ 						<ion-icon class="zmdi zmdi-arrow-missed ion-text-start"></ion-icon>
+ 						<span class="message">June 12, 12:31 pm</span>
+ 					</p>
+ 				</div>
+ 				<ion-icon class="end zmdi zmdi-phone ion-text-end"></ion-icon>
+ 			</div>
+ 		</ion-item>
+ 		<ion-item class="missed animated slideInRight delay_8" (click)="profileinfo()">
+ 			<div class="item_inner d-flex">
+ 				<div class="profile_img_box">
+ 					<div class="profile_img">
+ 						<img src="assets/imgs/5.png">
+ 					</div>
+ 				</div>
+ 				<div class="text-box">
+ 					<h2 class="d-flex"><span>Byron kenny</span></h2>
+ 					<p class="d-flex">
+ 						<ion-icon class="zmdi zmdi-arrow-missed ion-text-start"></ion-icon>
+ 						<span class="message">June 12, 12:31 pm</span>
+ 					</p>
+ 				</div>
+ 				<ion-icon class="end zmdi zmdi-videocam ion-text-end"></ion-icon>
+ 			</div>
+ 		</ion-item>
+ 		<ion-item class="animated slideInRight delay_9" (click)="profileinfo()">
+ 			<div class="item_inner d-flex">
+ 				<div class="profile_img_box">
+ 					<div class="profile_img">
+ 						<img src="assets/imgs/3.png">
+ 					</div>
+ 				</div>
+ 				<div class="text-box">
+ 					<h2 class="d-flex"><span>Brinley</span> </h2>
+ 					<p class="d-flex">
+ 						<ion-icon class="zmdi zmdi-arrow-right-top ion-text-start"></ion-icon>
+ 						<span class="message">June 12, 12:31 pm</span>
+ 					</p>
+ 				</div>
+ 				<ion-icon class="end zmdi zmdi-phone ion-text-end"></ion-icon>
+ 			</div>
+ 		</ion-item>
+ 		<ion-item class="animated slideInRight delay_10" (click)="profileinfo()">
+ 			<div class="item_inner d-flex">
+ 				<div class="profile_img_box">
+ 					<div class="profile_img">
+ 						<img src="assets/imgs/2.png">
+ 					</div>
+ 				</div>
+ 				<div class="text-box">
+ 					<h2 class="d-flex"><span>Brooklynn</span></h2>
+ 					<p class="d-flex">
+ 						<ion-icon class="zmdi zmdi-arrow-right-top ion-text-start"></ion-icon>
+ 						<span class="message">June 12, 12:31 pm</span>
+ 					</p>
+ 				</div>
+ 				<ion-icon class="end zmdi zmdi-phone ion-text-end"></ion-icon>
+ 			</div>
+ 		</ion-item>
+ 		<ion-item class="animated slideInRight delay_11" (click)="profileinfo()">
+ 			<div class="item_inner d-flex">
+ 				<div class="profile_img_box">
+ 					<div class="profile_img">
+ 						<img src="assets/imgs/6.png">
+ 					</div>
+ 				</div>
+ 				<div class="text-box">
+ 					<h2 class="d-flex"><span>Brenda</span> </h2>
+ 					<p class="d-flex">
+ 						<ion-icon class="zmdi zmdi-arrow-right-top ion-text-start"></ion-icon>
+ 						<span class="message">June 12, 12:31 pm</span>
+ 					</p>
+ 				</div>
+ 				<ion-icon class="end zmdi zmdi-videocam ion-text-end"></ion-icon>
+ 			</div>
+ 		</ion-item>
+ 		<ion-item class="animated slideInRight delay_12" (click)="profileinfo()">
+ 			<div class="item_inner d-flex">
+ 				<div class="profile_img_box">
+ 					<div class="profile_img">
+ 						<img src="assets/imgs/8.png">
+ 					</div>
+ 				</div>
+ 				<div class="text-box">
+ 					<h2 class="d-flex"><span>Bernadette</span> </h2>
+
+ 					<p class="d-flex">
+ 						<ion-icon class="zmdi zmdi-arrow-right-top ion-text-start"></ion-icon>
+ 						<span class="message">June 12, 12:31 pm</span>
+ 					</p>
+ 				</div>
+ 				<ion-icon class="end zmdi zmdi-phone ion-text-end"></ion-icon>
+ 			</div>
+ 		</ion-item>
+ 	</ion-list>
+
+ 	<ion-fab class="animated zoomIn delay_4" vertical="bottom" horizontal="end" slot="fixed">
+ 		<ion-fab-button>
+ 			<ion-icon class="zmdi zmdi-plus"></ion-icon>
+ 		</ion-fab-button>
+ 	</ion-fab>
+ </ion-content>

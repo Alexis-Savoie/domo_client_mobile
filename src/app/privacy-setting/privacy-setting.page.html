@@ -1,0 +1,64 @@
+<ion-header>
+	<ion-toolbar>
+	<ion-buttons slot="start">
+			<ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+		</ion-buttons>
+		<ion-title>{{'privacy_setting' | translate}}</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content class="bg_color">
+	<div class="form">
+		<ion-list lines="none">
+			<h2>{{'set_who_can_see' | translate}}</h2>
+			<ion-item class="animated slideInRight delay_1">
+				<ion-label position="stacked" >{{'last_seen' | translate}}</ion-label>
+				<ion-select interface="action-sheet" [(ngModel)]="last_seen">
+					<ion-select-option value="everyone">{{'everyone' | translate}}</ion-select-option>
+					<ion-select-option value="my_contacts">{{'my_contacts' | translate}}</ion-select-option>
+					<ion-select-option value="noboby">{{'noboby' | translate}}</ion-select-option>
+				</ion-select>
+			</ion-item>
+
+			<ion-item class="animated slideInRight delay_2">
+				<ion-label position="stacked">{{'profile_picture' | translate}}</ion-label>
+				<ion-select interface="action-sheet" [(ngModel)]="profile_picture">
+					<ion-select-option value="friends">{{'friends' | translate}}</ion-select-option>
+					<ion-select-option value="my_contacts">{{'my_contacts' | translate}}</ion-select-option>
+					<ion-select-option value="noboby">{{'noboby' | translate}}</ion-select-option>
+				</ion-select>
+			</ion-item>
+
+			<ion-item class="animated slideInRight delay_3">
+				<ion-label position="stacked">{{'status' | translate}}</ion-label>
+				<ion-select interface="action-sheet" [(ngModel)]="status">
+					<ion-select-option value="everyone">{{'everyone' | translate}}</ion-select-option>
+					<ion-select-option value="my_contacts">{{'my_contacts' | translate}}</ion-select-option>
+					<ion-select-option value="only_share_with">{{'only_share_with' | translate}}</ion-select-option>
+				</ion-select>
+			</ion-item>
+			<ion-item class="animated slideInRight delay_4">
+				<ion-label position="stacked">{{'email_address' | translate}}</ion-label>
+				<ion-select interface="action-sheet" [(ngModel)]="email_address">
+					<ion-select-option value="me">{{'me' | translate}}</ion-select-option>
+					<ion-select-option value="friends">{{'friends' | translate}}</ion-select-option>
+					<ion-select-option value="my_contacts">{{'my_contacts' | translate}}</ion-select-option>
+				</ion-select>
+			</ion-item> 
+			<div>
+				<h2>{{'blocked_profiles' | translate}}</h2>
+				<ion-item class="animated slideInRight delay_5">
+					<div class="item_inner d-flex">
+						<ion-label position="stacked">
+							{{'list_of_contacs_you_blocked' | translate}}
+							<h3 class="d-flex">10 Contacts
+								<ion-icon class="material-icons end">keyboard_arrow_right</ion-icon>
+							</h3>
+						</ion-label>
+						<ion-icon class="zmdi zmdi-chevron-right ion-text-end"></ion-icon>
+					</div>
+				</ion-item>
+			</div>
+		</ion-list>
+	</div>
+</ion-content>

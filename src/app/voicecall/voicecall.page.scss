@@ -1,0 +1,181 @@
+ ion-content {
+ 	--background: var(--transparent) !important;
+ }
+
+ .voice_chat {
+ 	position: relative;
+ 	width: 100%;
+ 	max-width: 310px;
+ 	height: 310px;
+ 	border-radius: 50%;
+ 	margin: 0 auto;
+ 	margin-top: 60px;
+
+ 	.img-box {
+ 		width: 120px;
+ 		height: 120px;
+ 		border-radius: 50%;
+ 		overflow: hidden;
+ 		margin: auto;
+ 		position: absolute;
+ 		left: 0;
+ 		right: 0;
+ 		top: 0;
+ 		bottom: 0;
+
+ 		img {
+ 			position: absolute;
+ 			width: 100%;
+ 			height: 100%;
+ 			max-width: unset;
+ 			top: 0;
+ 			bottom: 0;
+ 			left: -50% !important;
+ 			right: -50% !important;
+ 			margin: auto;
+ 		}
+ 	}
+
+ 	.animation_box {
+ 		position: absolute;
+ 		width: 100%;
+ 		height: 100%;
+ 		left: 0;
+ 		right: 0;
+ 		top: 0;
+ 		bottom: 0;
+ 		background: rgba(255, 255, 255, 0.058823529411764705);
+ 		border-radius: 50%;
+ 		margin: auto;
+ 		transition: all .3s;
+
+ 		&.a {
+ 			width: 100%;
+ 			height: 100%;
+ 			animation: a 1.5s ease-in-out -0s infinite;
+ 		}
+
+ 		&.b {
+ 			width: 80%;
+ 			height: 80%;
+ 			animation: b 2s ease-in-out -0s infinite;
+ 		}
+
+ 		&.c {
+ 			width: 60%;
+ 			height: 60%;
+ 			animation: c 2.5s ease-in-out -0s infinite;
+ 		}
+
+ 		&.d {
+ 			width: 460%;
+ 			height: 46%;
+ 			animation: d 3s ease-in-out -0s infinite;
+ 		}
+ 	}
+ }
+
+ @keyframes a {
+ 	from {
+ 		height: 0%;
+ 		width: 0;
+ 	}
+
+ 	to {
+ 		height: 100%;
+ 		width: 100%;
+ 	}
+ }
+
+ @keyframes b {
+ 	from {
+ 		height: 0%;
+ 		width: 0;
+ 	}
+
+ 	to {
+ 		width: 100%;
+ 		height: 100%;
+ 	}
+ }
+
+ @keyframes c {
+ 	from {
+ 		height: 0%;
+ 		width: 0;
+ 	}
+
+ 	to {
+ 		width: 100%;
+ 		height: 100%;
+ 	}
+ }
+
+ @keyframes d {
+ 	from {
+ 		height: 0%;
+ 		width: 0;
+ 	}
+
+ 	to {
+ 		width: 100%;
+ 		height: 100%;
+ 	}
+ }
+
+ .details {
+ 	position: relative;
+ 	z-index: 99;
+ 	color: var(--white);
+ 	padding-top: 17px;
+
+ 	h2 {
+ 		margin: 0;
+ 		font-size: 1.1rem;
+ 		font-weight: 400;
+ 		padding-bottom: 6px;
+ 	}
+
+ 	p {
+ 		margin: 0;
+ 		font-size: .9rem;
+ 		font-weight: 300;
+ 	}
+ }
+
+ ion-footer {
+ 	padding-bottom: 15px;
+ 	position: fixed;
+ 	bottom: 0;
+ 	width: 100%;
+ 	left: 0;
+ 	color: var(--white);
+
+ 	ion-row {
+ 		align-items: center;
+
+ 		ion-col {
+ 			h2 {
+ 				margin: 0;
+ 				font-size: 0.9rem;
+ 				font-weight: 400;
+ 			}
+
+ 			ion-icon {
+ 				font-size: 1.5rem;
+
+ 				&.zmdi-phone-end {
+ 					background: #FF3131;
+ 					min-width: 55px;
+ 					line-height: 55px;
+ 					height: 55px;
+ 					border-radius: 50%;
+ 					text-align: center;
+ 					font-size: 1.5rem;
+ 					margin: 0 20px;
+ 					color: var(--white);
+ 				}
+ 			}
+ 		}
+ 	}
+ }

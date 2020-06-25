@@ -1,0 +1,39 @@
+<!--
+<ion-header class="bg-transparent">
+    <ion-navbar>
+        <ion-title>
+            <ion-icon class="material-icons end">more_vert</ion-icon>
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+-->
+
+<ion-content fullscreen>
+	<div class="voice_chat animated zoomIn delay_3">
+		<div class="animation_box a"></div>
+		<div class="animation_box b"></div>
+		<div class="animation_box c"></div>
+		<div class="animation_box d"></div>
+		<div class="img-box">
+			<img src="assets/imgs/profile_pic.png">
+		</div>
+	</div>
+	<div class="details text-white ion-text-center">
+		<h2>Luicy Williams</h2>
+		<p>987 654 3210</p>
+	</div>
+</ion-content>
+
+<ion-footer no-border class="animated slideInUp delay_3">
+	<ion-row class="text-white">
+		<ion-col col-4 class="ion-text-center">
+			<ion-icon class="zmdi zmdi-volume-up" style="position: relative; top: 4px;"></ion-icon>
+		</ion-col>
+		<ion-col col-4 class="ion-text-center" (click)="dismiss()">
+			<ion-icon class="zmdi zmdi-phone-end" (click)="dismiss()"></ion-icon>
+		</ion-col>
+		<ion-col col-4 class="ion-text-center">
+			<h2 style="position: relative; top: 4px;">04:29</h2>
+		</ion-col>
+	</ion-row>
+</ion-footer>

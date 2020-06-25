@@ -1,0 +1,28 @@
+ ion-list {
+	h2 {
+		margin: 0;
+		font-size: 1rem;
+		letter-spacing: 0;
+		padding: 28px 15px 11px 15px;
+		font-weight: 500;
+		color: var(--text-dark);
+	}
+
+	ion-item {
+		margin-bottom: 6px;
+		padding: 15px 15px 2px 15px;
+
+		ion-icon {
+			font-size: 1.7rem;
+			color: var(--text-dark);
+			min-width: 20px;
+		}
+
+		h3 {
+			font-size: 1rem !important;
+			font-weight: 500 !important;
+			margin: 0;
+			color: #000;
+		}
+	}
+}

@@ -1,0 +1,7 @@
+{
+  "name": "woochat_ionic_4",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
