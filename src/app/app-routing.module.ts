@@ -1,18 +1,19 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from '../guards/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'sign-in',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
     path: '',
-    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule), canActivate: [AuthGuard]
   }, 
   {
-    path: 'sign-in',
+    path: 'login',
     loadChildren: () => import('./sign-in/sign-in.module').then( m => m.SignInPageModule)
   },
   {
@@ -20,90 +21,89 @@ const routes: Routes = [
     loadChildren: () => import('./verification/verification.module').then( m => m.VerificationPageModule)
   },
   {
-    path: 'set-profile',
+    path: 'register',
     loadChildren: () => import('./set-profile/set-profile.module').then( m => m.SetProfilePageModule)
   },
   {
     path: 'chat-list',
-    loadChildren: () => import('./chat-list/chat-list.module').then( m => m.ChatListPageModule)
+    loadChildren: () => import('./chat-list/chat-list.module').then( m => m.ChatListPageModule), canActivate: [AuthGuard]
   },
   {
     path: 'new-chat',
-    loadChildren: () => import('./new-chat/new-chat.module').then( m => m.NewChatPageModule)
+    loadChildren: () => import('./new-chat/new-chat.module').then( m => m.NewChatPageModule), canActivate: [AuthGuard]
   },
   {
     path: 'chatting',
-    loadChildren: () => import('./chatting/chatting.module').then( m => m.ChattingPageModule)
+    loadChildren: () => import('./chatting/chatting.module').then( m => m.ChattingPageModule), canActivate: [AuthGuard]
   },
   {
     path: 'profile-info',
-    loadChildren: () => import('./profile-info/profile-info.module').then( m => m.ProfileInfoPageModule)
+    loadChildren: () => import('./profile-info/profile-info.module').then( m => m.ProfileInfoPageModule), canActivate: [AuthGuard]
   },
   {
     path: 'picture',
-    loadChildren: () => import('./picture/picture.module').then( m => m.PicturePageModule)
+    loadChildren: () => import('./picture/picture.module').then( m => m.PicturePageModule), canActivate: [AuthGuard]
   },
   {
     path: 'group-list',
-    loadChildren: () => import('./group-list/group-list.module').then( m => m.GroupListPageModule)
+    loadChildren: () => import('./group-list/group-list.module').then( m => m.GroupListPageModule), canActivate: [AuthGuard]
   },
   {
     path: 'create-group',
-    loadChildren: () => import('./create-group/create-group.module').then( m => m.CreateGroupPageModule)
+    loadChildren: () => import('./create-group/create-group.module').then( m => m.CreateGroupPageModule), canActivate: [AuthGuard]
   },
   {
     path: 'create-group-info',
-    loadChildren: () => import('./create-group-info/create-group-info.module').then( m => m.CreateGroupInfoPageModule)
+    loadChildren: () => import('./create-group-info/create-group-info.module').then( m => m.CreateGroupInfoPageModule), canActivate: [AuthGuard]
   },
   {
     path: 'group-chatting',
-    loadChildren: () => import('./group-chatting/group-chatting.module').then( m => m.GroupChattingPageModule)
+    loadChildren: () => import('./group-chatting/group-chatting.module').then( m => m.GroupChattingPageModule), canActivate: [AuthGuard]
   },
   {
     path: 'group-info',
-    loadChildren: () => import('./group-info/group-info.module').then( m => m.GroupInfoPageModule)
+    loadChildren: () => import('./group-info/group-info.module').then( m => m.GroupInfoPageModule), canActivate: [AuthGuard]
   },
   {
     path: 'call-logs',
-    loadChildren: () => import('./call-logs/call-logs.module').then( m => m.CallLogsPageModule)
+    loadChildren: () => import('./call-logs/call-logs.module').then( m => m.CallLogsPageModule), canActivate: [AuthGuard]
   },
   {
     path: 'voicecall',
-    loadChildren: () => import('./voicecall/voicecall.module').then( m => m.VoicecallPageModule)
+    loadChildren: () => import('./voicecall/voicecall.module').then( m => m.VoicecallPageModule), canActivate: [AuthGuard]
   }, 
   {
     path: 'videocall',
-    loadChildren: () => import('./videocall/videocall.module').then( m => m.VideocallPageModule)
+    loadChildren: () => import('./videocall/videocall.module').then( m => m.VideocallPageModule), canActivate: [AuthGuard]
   },
   {
     path: 'more',
-    loadChildren: () => import('./more/more.module').then( m => m.MorePageModule)
+    loadChildren: () => import('./more/more.module').then( m => m.MorePageModule), canActivate: [AuthGuard]
   },
   {
     path: 'my-profile',
-    loadChildren: () => import('./my-profile/my-profile.module').then( m => m.MyProfilePageModule)
+    loadChildren: () => import('./my-profile/my-profile.module').then( m => m.MyProfilePageModule), canActivate: [AuthGuard]
   },
   {
     path: 'privacy-setting',
-    loadChildren: () => import('./privacy-setting/privacy-setting.module').then( m => m.PrivacySettingPageModule)
+    loadChildren: () => import('./privacy-setting/privacy-setting.module').then( m => m.PrivacySettingPageModule), canActivate: [AuthGuard]
   },
   {
     path: 'chat-setting',
-    loadChildren: () => import('./chat-setting/chat-setting.module').then( m => m.ChatSettingPageModule)
+    loadChildren: () => import('./chat-setting/chat-setting.module').then( m => m.ChatSettingPageModule), canActivate: [AuthGuard]
   },
   {
     path: 'notification-setting',
-    loadChildren: () => import('./notification-setting/notification-setting.module').then( m => m.NotificationSettingPageModule)
-  },  {
-    path: 'change-language',
-    loadChildren: () => import('./change-language/change-language.module').then( m => m.ChangeLanguagePageModule)
+    loadChildren: () => import('./notification-setting/notification-setting.module').then( m => m.NotificationSettingPageModule), canActivate: [AuthGuard]
   },
   {
-    path: 'register',
-    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
-  }
-
+    path: 'change-language',
+    loadChildren: () => import('./change-language/change-language.module').then( m => m.ChangeLanguagePageModule), canActivate: [AuthGuard]
+  },
 ];
+
+
+
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })

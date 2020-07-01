@@ -2,8 +2,19 @@ ion-header {
 	ion-toolbar {
 		ion-title {
 			padding: 0 15px !important;
+			text-align: center;
 		}
 	}
+}
+
+ion-button {
+	width: calc(100% - 80px);
+	margin: 0 auto !important;
+	padding: 5px 0;
+	--background: var(--primary) !important;
+	color: var(--white) !important;
+	display: block;
+	font-weight: 500 !important;
 }
 
 .form {

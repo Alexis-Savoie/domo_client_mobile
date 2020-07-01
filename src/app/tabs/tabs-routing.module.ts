@@ -13,7 +13,7 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: () =>
-             import('../chat-list/chat-list.module').then(m => m.ChatListPageModule) 
+            import('../chat-list/chat-list.module').then(m => m.ChatListPageModule) 
           }
         ]
       }, 

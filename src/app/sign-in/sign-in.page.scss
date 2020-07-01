@@ -13,6 +13,11 @@ ion-content {
 	}
 }
 
+ion-title {
+	text-align: center;
+}
+
+
 .form {
 	margin-top: 50px;
 
@@ -20,26 +25,29 @@ ion-content {
 		ion-item {
 			padding: 10px 0;
 			border-radius: 5px;
+			margin-bottom: 10px;
 
 			h2 {
 				margin: 0;
 				min-width: 55px;
 				font-size: 1rem;
 				font-weight: 500;
+				color: var(--white);
 			}
 
 			ion-input {
 				font-size: 1rem !important;
 			}
-
-			.button {
-				&.btn {
-					max-width: 95px;
-					height: 40px;
-					margin: 0 7px;
-				}
-			}
-
 		}
+	}
+
+	.button.btn {
+		width: calc(100% - 80px);
+		margin: 0 auto !important;
+		padding: 5px 0;
+		--background: var(--white) !important;
+		color: var(--primary) !important;
+		display: block;
+		font-weight: 500 !important;
 	}
 }
