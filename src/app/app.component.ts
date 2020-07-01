@@ -6,6 +6,10 @@ import { TranslateService } from '@ngx-translate/core';
 import { Constants } from 'src/models/contants.models';
 import { APP_CONFIG, AppConfig } from './app.config';
 import { MyEvent } from 'src/services/myevent.services';
+import { AuthService } from '../services/auth.service';
+import { AlertService } from '../services/alert.service';
+import { NativeStorage } from '@ionic-native/native-storage/ngx';
+
 
 @Component({
   selector: 'app-root',
@@ -19,6 +23,9 @@ export class AppComponent {
     private platform: Platform, private navCtrl: NavController,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
+    private authService: AuthService,
+    private alertService: AlertService,
+    private storage: NativeStorage,
     private translate: TranslateService, private myEvent: MyEvent) {
     this.initializeApp();
     this.myEvent.getLanguageObservable().subscribe(value => {
@@ -30,6 +37,8 @@ export class AppComponent {
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
+      //this.splashScreen.hide();
+      this.authService.getToken();
       this.splashScreen.hide();
 
       let defaultLang = window.localStorage.getItem(Constants.KEY_DEFAULT_LANGUAGE);
@@ -56,4 +65,26 @@ export class AppComponent {
       }
     }
   }
+
+
+
+
+    // When Logout Button is pressed 
+    logout() {
+
+      this.storage.getItem('user')
+      .then(
+        data => {
+          this.authService.logout(data.id_user, data.token)
+        }
+      );
+
+
+
+    }
+
+
+
+
+
 }
