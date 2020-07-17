@@ -33,7 +33,7 @@ const routes: Routes = [
     loadChildren: () => import('./new-chat/new-chat.module').then( m => m.NewChatPageModule), canActivate: [AuthGuard]
   },
   {
-    path: 'chatting',
+    path: 'chatting/:id_conversation/:name/:pp',
     loadChildren: () => import('./chatting/chatting.module').then( m => m.ChattingPageModule), canActivate: [AuthGuard]
   },
   {

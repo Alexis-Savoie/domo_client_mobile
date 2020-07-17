@@ -1,134 +1,76 @@
- <ion-header class="bg_transparent">
- 	<ion-toolbar>
- 		<ion-buttons slot="start">
-			<ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+<ion-header class="bg_transparent">
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-back-button text="" icon="chevron-back-outline" ></ion-back-button>
 		</ion-buttons>
- 		<ion-title>
- 			<div class="profile d-flex active">
- 				<div class="profile_img_box" (click)="profileinfo()">
- 					<div class="profile_img">
- 						<img src="assets/imgs/1.png">
- 					</div>
- 				</div>
- 				<h2 (click)="profileinfo()">Luicy Williams</h2>
- 				<span class="end">
- 					<ion-icon class="zmdi zmdi-videocam ion-text-center" (click)="videocall()"></ion-icon>
- 					<ion-icon class="zmdi zmdi-phone ion-text-center" (click)="voicecall()"></ion-icon>
- 					<ion-icon class="zmdi zmdi-more-vert ion-text-center"></ion-icon>
- 				</span>
- 			</div>
- 		</ion-title>
- 	</ion-toolbar>
- </ion-header>
+		<ion-title>
+			<div class="profile d-flex active">
+				<div class="profile_img_box" (click)="profileinfo()">
+					<div class="profile_img">
+						<img src={{pp}}>
+					</div>
+				</div>
+				<h2 (click)="profileinfo()">{{convName}}</h2>
+				<span class="end">
+					<ion-icon></ion-icon>
+					<ion-icon></ion-icon>
+					<ion-icon class="zmdi zmdi-more-vert ion-text-center"  (click)="logout()"></ion-icon>
+				</span>
+			</div>
+		</ion-title>
+	</ion-toolbar>
+</ion-header>
 
- <ion-content>
- 	<div class="chat_container d-flex">
- 		<div class="chat-box d-flex received">
- 			<div class="chat">
- 				<div class="chat_detail">
- 					<div class="text">
- 						<h2>Hello, there?</h2>
- 					</div>
- 				</div>
- 			</div>
- 			<p>12:01 pm</p>
- 		</div>
+<ion-content >
+	<div class="chat_container d-flex"  *ngFor="let message of conversationService.messages">
 
- 		<div class="chat-box d-flex received">
- 			<div class="chat">
- 				<div class="chat_detail">
- 					<div class="text">
- 						<h2>Hope you remember me.</h2>
- 					</div>
- 				</div>
- 			</div>
- 			<p>12:02 pm</p>
- 		</div>
+	   <div  *ngIf="message.id_user == this.id_user" class="chat-box d-flex send">
+		   <div class="chat">
+			   <div class="chat_detail">
+				   <div class="text">
+					   <h2>{{message.text}}</h2>
+				   </div>
+			   </div>
+		   </div>
+		   <!--<p>{{message.sendDate}}</p>-->
+		</div>
 
+   		<div *ngIf="message.id_user != this.id_user" class="chat-box d-flex received">
+		   <div class="chat">
+			   <div class="chat_detail">
+				   <div class="text">
+					   <h2>{{message.text}}</h2>
+				   </div>
+			   </div>
+		   </div>
+		   <!--<p>{{message.sendDate}}</p>-->
+		</div>
 
- 		<div class="chat-box d-flex send">
- 			<p>12:02 pm</p>
- 			<div class="chat">
- 				<div class="chat_detail">
- 					<div class="text">
- 						<h2>Hey, Hi Samantha.</h2>
- 					</div>
- 				</div>
- 			</div>
- 		</div>
+	</div>
 
- 		<div class="chat-box d-flex send">
- 			<p>12:02 pm</p>
- 			<div class="chat">
- 				<div class="chat_detail">
- 					<div class="text">
- 						<h2>Ofcourse i remember you.</h2>
- 					</div>
- 				</div>
- 			</div>
- 		</div>
+</ion-content>
 
 
- 		<div class="chat-box d-flex received">
- 			<div class="chat">
- 				<div class="chat_detail">
- 					<div class="text">
- 						<h2>Can you send me a contact of Tonny?</h2>
- 					</div>
- 				</div>
- 			</div>
- 			<p>12:06 pm</p>
- 		</div>
-
-
- 		<div class="chat-box d-flex send">
- 			<p>12:06 pm</p>
- 			<div class="chat">
- 				<div class="chat_detail">
- 					<div class="text">
- 						<h2>Sure. Sending you in a while.</h2>
- 					</div>
- 				</div>
- 			</div>
- 		</div>
-		
-		<div class="chat-box d-flex send contact">
- 			<p>12:06 pm</p>
- 			<div class="chat">
- 				<div class="chat_detail">
- 					<div class="text">
- 						<h2>Tonny Jackson</h2>
-						<div class="icon_box">
-							<ion-icon class="zmdi zmdi-account-add"></ion-icon>
-							<ion-icon class="zmdi zmdi-comment-alt-text"></ion-icon>
-						</div>
- 					</div>
- 				</div>
- 			</div>
- 		</div>
- 	</div>
- </ion-content>
-
- <ion-footer class="form animated slideInUp delay_3">
- 	<ion-list lines="none" [ngClass]="viewType == 'active' ? 'list active':'list'">
- 		<div class="option bg-theme d-flex">
- 			<ion-icon class="zmdi zmdi-file-text"></ion-icon>
- 			<ion-icon class="zmdi zmdi-headset-mic"></ion-icon>
- 			<ion-icon class="zmdi zmdi-account-calendar"></ion-icon>
- 			<ion-icon class="zmdi zmdi-pin"></ion-icon>
- 			<ion-icon class="zmdi zmdi-image"></ion-icon>
- 			<ion-icon class="zmdi zmdi-camera"></ion-icon>
- 			<ion-icon class="zmdi zmdi-close" (click)="setViewType(null)"></ion-icon>
- 		</div>
- 		<ion-item lines="none">
- 			<div class="item_inner d-flex">
- 				<ion-icon class="zmdi zmdi-mood" ion-text-start></ion-icon>
- 				<ion-input type="text " placeholder="{{ 'type_your_message' | translate}} "></ion-input>
- 				<div class="end icon_box">
- 					<ion-icon class="zmdi zmdi-attachment-alt ion-text-end" (click)="setViewType('active')"></ion-icon>
- 					<ion-icon class="zmdi zmdi-mic ion-text-end"></ion-icon>
- 				</div>
- 			</div>
- 		</ion-item>
- 	</ion-list>
- </ion-footer>
+<ion-footer class="form animated slideInUp delay_3">
+	<ion-list lines="none" [ngClass]="viewType == 'active' ? 'list active':'list'">
+		<div class="option bg-theme d-flex">
+			<ion-icon class="zmdi zmdi-file-text"></ion-icon>
+			<ion-icon class="zmdi zmdi-headset-mic"></ion-icon>
+			<ion-icon class="zmdi zmdi-account-calendar"></ion-icon>
+			<ion-icon class="zmdi zmdi-pin"></ion-icon>
+			<ion-icon class="zmdi zmdi-image"></ion-icon>
+			<ion-icon class="zmdi zmdi-camera"></ion-icon>
+			<ion-icon class="zmdi zmdi-close" (click)="setViewType(null)"></ion-icon>
+		</div>
+		<ion-item lines="none">
+			<div class="item_inner d-flex">
+				<!--<ion-icon class="zmdi zmdi-mood" ion-text-start></ion-icon>-->
+				<ion-input type="text" [(ngModel)]="message"  placeholder="{{ 'type_your_message' | translate}} "></ion-input>
+				<div class="end icon_box">
+					<ion-icon class="zmdi zmdi-camera ion-text-end" (click)="selectDocument()"></ion-icon>
+					<ion-icon class="zmdi zmdi-long-arrow-up ion-text-end" (click)="sendMessage()"></ion-icon>
+				</div>
+			</div>
+		</ion-item>
+	</ion-list>
+</ion-footer>

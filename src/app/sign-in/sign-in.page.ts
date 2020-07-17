@@ -31,11 +31,30 @@ export class SignInPage implements OnInit {
 
   ngOnInit() {
 
-    this.storage.remove('user')
+    this.storage.getItem('user')
+    .then(
+      data => {
+        if(data.id_user)
+        {
+          console.log("hello login : " + data.id_user)
+          this.navCtrl.navigateRoot(['./tabs']);
+        }
+        else 
+        {
+          this.storage.remove('user')
+        }
+          
+      }, error => {
+        this.storage.remove('user')
+      }
+    );
+
+
     this.authService.isLoggedIn = false;
 
-    this.phone = "07 61 13 41 70"
+    this.phone = "0761134170"
     this.password = "bonjour"
+
   }
 
 
