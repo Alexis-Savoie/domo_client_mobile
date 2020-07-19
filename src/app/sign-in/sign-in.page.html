@@ -6,7 +6,7 @@
 		<ion-toolbar>
 			<ion-title>
 				<h2>
-					<span>Login</span>
+					<span>Connexion</span>
 				</h2>
 			</ion-title>
 		</ion-toolbar>
@@ -16,18 +16,18 @@
 		<ion-list lines="none" class="animated slideInUp delay_2">
 			<ion-item lines="none">
 				<h2 slot="start" class="ion-text-center"></h2>
-				<ion-input type="text" [(ngModel)]="phone"  placeholder="{{'enter_phone_number' | translate}}"></ion-input> 
+				<ion-input type="text" [(ngModel)]="phone"  placeholder="Téléphone"></ion-input> 
 			</ion-item>
 			<ion-item lines="none">
 				<h2 slot="start" class="ion-text-center"></h2>
-				<ion-input type="password" [(ngModel)]="password"  placeholder="{{'password' | translate}}"></ion-input> 
+				<ion-input type="password" [(ngModel)]="password"  placeholder="Mot de passe"></ion-input> 
 			</ion-item>
 		</ion-list>
 	</div>
 	<div class="form">
 		<ion-list>	
-			<ion-button slot="start" size="large" shape="round" class="btn"  (click)="login()">{{'Login' | translate}}</ion-button>
-			<ion-button slot="end" size="large" shape="round" class="btn" (click)="goRegister()">{{'Register' | translate}}</ion-button>
+			<ion-button slot="start" size="large" shape="round" class="btn"  (click)="login()">Connexion</ion-button>
+			<ion-button slot="end" size="large" shape="round" class="btn" (click)="goRegister()">S'enregistrer</ion-button>
 		</ion-list>
 	</div>
 </ion-content>

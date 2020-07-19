@@ -3,8 +3,9 @@ import { Injectable } from '@angular/core';
 import { tap } from 'rxjs/operators';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { EnvService } from './env.service';
-import { User } from '../models/user';
 import { AlertService } from './alert.service';
+import { User } from '../models/user';
+
 import { NavController } from '@ionic/angular';
 
 @Injectable({
@@ -14,7 +15,7 @@ import { NavController } from '@ionic/angular';
 export class AuthService {
   isLoggedIn = false;
   id_user = -1;
-  token:any;
+  token: any;
 
   constructor(
     private http: HttpClient,
@@ -27,72 +28,91 @@ export class AuthService {
 
 
   login(phone: String, password: String) {
-    return this.http.post(this.env.API_URL + '/loginUser', {phone: phone, password: password}
-    ).subscribe ((data:any) => 
-      {
-        console.log("data error : ")
-        console.log(data.error)
-        // If returned data with the POST request is valid log the user in
-        if ('error' in data)
-        {
-            this.storage.setItem('user', {user_id: data.id_user, token:  data.token})
-            this.id_user = data.id_user;
-            this.token = data.token;
-            this.isLoggedIn = true;
-            this.alertService.presentToast("Logged In");
-            this.navCtrl.navigateRoot('/tabs');
-        }
-        else
-        {
-          this.alertService.presentToast("Server error");
-        }
+    return this.http.post(this.env.API_URL + '/loginUser', { phone: phone, password: password }
+    ).subscribe((data: any) => {
+      console.log("data error : ")
+      console.log(data.error)
+      // If returned data with the POST request is valid log the user in
+      if ('error' in data) {
+        this.storage.setItem('user', { id_user: data.id_user, token: data.token })
+        this.id_user = data.id_user;
+        this.token = data.token;
         
-      }, ((error:any) => 
-      {
-        console.log("data error : ")
-        console.log(error.error.error)
-        // Managed by the API error
-        if ('error' in error.error)
-        {
-          this.alertService.presentToast(error.error.message);
-        }
-        else
-        {
-          this.alertService.presentToast("Server error");
-        }
-      })
-      ) 
+
+        // Check if the user is ban
+        this.http.request('GET', this.env.API_URL + '/user/isBlocked/' + data.id_user.toString() + "/" + data.token)
+          .subscribe((data2: any) => {
+            if (data2.isBlocked == 0)
+            {
+              this.isLoggedIn = true;
+              this.alertService.presentToast("Connecté");
+              this.navCtrl.navigateRoot('/tabs');
+            }
+            else 
+            {
+              this.alertService.presentToast("Désolé mais vous êtes actuellement bloqué");
+            }
+            
+
+
+          }, ((error: any) => {
+            console.log("data error : ")
+            console.log(error.error)
+            // Managed by the API error
+            if ('error' in error.error) {
+              this.alertService.presentToast(error.error.message);
+            }
+            else {
+              this.alertService.presentToast("Server error");
+            }
+          })
+          )
+
+
+      }
+      else {
+        this.alertService.presentToast("Server error");
+      }
+
+    }, ((error: any) => {
+      console.log("data error : ")
+      console.log(error.error.error)
+      // Managed by the API error
+      if ('error' in error.error) {
+        this.alertService.presentToast(error.error.message);
+      }
+      else {
+        this.alertService.presentToast("Server error");
+      }
+    })
+    )
   }
 
 
 
-  
+
   logout(id_user: Number, token: String) {
     console.log("logout data : " + id_user + " " + token);
-    
+
     let options = {
       headers: new HttpHeaders({
-          'Content-Type': 'application/json',
+        'Content-Type': 'application/json',
       }),
       body: { id_user: id_user.toString(), token: token }
-  }
+    }
 
     return this.http.request('DELETE', this.env.API_URL + '/user/logout', options)
-    .subscribe ((data:any) => 
-      {
-        if ('error' in data)
-        {
+      .subscribe((data: any) => {
+        if ('error' in data) {
           console.log("data lol : ")
           console.log(data)
           this.storage.remove('user')
           this.isLoggedIn = false;
-          this.alertService.presentToast("Logout");
+          this.alertService.presentToast("Déconnexion");
           this.navCtrl.navigateRoot('/login');
         }
-      }, ((error:any) => 
-      {
-        if ('error' in error)
-        {
+      }, ((error: any) => {
+        if ('error' in error) {
           console.log("error lol : ")
           console.log(error)
           this.storage.remove('user')
@@ -108,45 +128,34 @@ export class AuthService {
 
   register(name: String, firstname: String, mail: String, phone: String, password: String) {
     return this.http.post(this.env.API_URL + '/createUser', { name: name, firstname: firstname, mail: mail, phone: phone, password: password }
-    ).subscribe ((data:any) => 
-      {
-        console.log("data error : ")
-        console.log(data.error)
-        // If returned data with the POST request is valid log the user in
-        if ('error' in data)
-        {
-            this.alertService.presentToast("Creation successfull !");
-            this.navCtrl.navigateRoot('/login');
-        }
-        else
-        {
-          this.alertService.presentToast("Server error");
-        }
-        
-      }, ((error:any) => 
-      {
-        console.log("data error : ")
-        console.log(error.error.error)
-        // Managed by the API error
-        if ('error' in error.error)
-        {
-          this.alertService.presentToast(error.error.message);
-        }
-        else
-        {
-          this.alertService.presentToast("Server error");
-        }
-      })
-      ) 
+    ).subscribe((data: any) => {
+      console.log("data error : ")
+      console.log(data.error)
+      // If returned data with the POST request is valid log the user in
+      if ('error' in data) {
+        this.alertService.presentToast("Votre compte à été créer avec succès");
+        this.navCtrl.navigateRoot('/login');
+      }
+      else {
+        this.alertService.presentToast("Server error");
+      }
+
+    }, ((error: any) => {
+      console.log("data error : ")
+      console.log(error.error.error)
+      // Managed by the API error
+      if ('error' in error.error) {
+        this.alertService.presentToast(error.error.message);
+      }
+      else {
+        this.alertService.presentToast("Server error");
+      }
+    })
+    )
   }
 
 
 
-
-
-  testConnexion() {
-    return this.http.get(this.env.API_URL + '/testRoute')
-  }
 
 
 
@@ -154,15 +163,15 @@ export class AuthService {
 
   user() {
     const headers = new HttpHeaders({
-      'Authorization': this.token["token_type"]+" "+this.token["access_token"]
+      'Authorization': this.token["token_type"] + " " + this.token["access_token"]
     });
 
     return this.http.get<User>(this.env.API_URL + 'auth/user', { headers: headers })
-    .pipe(
-      tap(user => {
-        return user;
-      })
-    )
+      .pipe(
+        tap(user => {
+          return user;
+        })
+      )
   }
 
   getToken() {
@@ -170,15 +179,15 @@ export class AuthService {
       data => {
         this.token = data;
 
-        if(this.token != null) {
-          this.isLoggedIn=true;
+        if (this.token != null) {
+          this.isLoggedIn = true;
         } else {
-          this.isLoggedIn=false;
+          this.isLoggedIn = false;
         }
       },
       error => {
         this.token = null;
-        this.isLoggedIn=false;
+        this.isLoggedIn = false;
       }
     );
   }

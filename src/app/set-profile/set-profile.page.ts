@@ -16,6 +16,7 @@ export class SetProfilePage implements OnInit {
   mail: string = "";
   phone: string = "";
   password: string = "";
+  confirmpassword: string = "";
 
   constructor(private modalController: ModalController,
     private authService: AuthService,
@@ -29,6 +30,9 @@ export class SetProfilePage implements OnInit {
     this.mail = "jean.aimar@bonjour.com"
     this.phone = "0761134181"
     this.password = "bonjour"
+    this.confirmpassword = "bonjour"
+    //this.navCtrl.navigateRoot(['./login']);
+   
   }
 
   tabs() {
@@ -36,6 +40,17 @@ export class SetProfilePage implements OnInit {
   }
 
   register(form: NgForm) {
-    this.authService.register(this.name, this.firstname, this.mail, this.phone, this.password)
+    if (this.password != this.confirmpassword)
+    {
+      this.alertService.presentToast("The passwords are not identical");
+      this.password = ""
+      this.confirmpassword = ""
+    }
+    else
+    {
+      this.authService.register(this.name, this.firstname, this.mail, this.phone, this.password)
+    }
+
+
   }
 }

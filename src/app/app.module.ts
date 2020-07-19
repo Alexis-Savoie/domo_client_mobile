@@ -17,7 +17,22 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { APP_CONFIG, BaseAppConfig } from './app.config';
 
+import { ImagePicker } from '@ionic-native/image-picker/ngx';
+import { Crop } from '@ionic-native/crop/ngx';
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';
+
+import { Contacts  } from '@ionic-native/contacts/ngx';
+
+
+
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
+
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+const config: SocketIoConfig = { url: 'https://51.83.133.1:3000', options: {} };
+
+
+
+
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -35,6 +50,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     VoicecallPageModule,
     VideocallPageModule,
     PicturePageModule,
+    SocketIoModule.forRoot(config),
+
+    
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -48,7 +66,12 @@ export function HttpLoaderFactory(http: HttpClient) {
     SplashScreen,
     { provide: APP_CONFIG, useValue: BaseAppConfig },
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    NativeStorage
+    ImagePicker,
+    Crop,
+    FileTransfer,
+    NativeStorage,
+    Contacts,
+    
   ],
   bootstrap: [AppComponent]
 })

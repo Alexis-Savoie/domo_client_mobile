@@ -2,7 +2,7 @@
 	<ion-toolbar>
 		<ion-title>
 			<h2>
-				<span>Register</span>
+				<span>S'enregistrer</span>
 			</h2>
 		</ion-title>
 	</ion-toolbar>
@@ -33,34 +33,39 @@
 			</ion-item>
 			-->
 
-			<h2>{{'profile_info' | translate}}</h2>
+			<h2>Info Profile</h2>
 
 			<ion-item lines="none" class="animated slideInRight delay_1">
-				<ion-label position="stacked">{{'name' | translate}}</ion-label>
-				<ion-input type="text" [(ngModel)]="name" placeholder="{{'name' | translate}}"></ion-input> 
+				<ion-label position="stacked">Nom</ion-label>
+				<ion-input type="text" [(ngModel)]="name" placeholder="Nom"></ion-input> 
 			</ion-item>
 
 			<ion-item lines="none" class="animated slideInRight delay_2">
-				<ion-label position="stacked">{{'firstname' | translate}}</ion-label>
-				<ion-input type="text" [(ngModel)]="firstname" placeholder="{{'firstname' | translate}}"></ion-input>
+				<ion-label position="stacked">Prénom</ion-label>
+				<ion-input type="text" [(ngModel)]="firstname" placeholder="Prénom"></ion-input>
 			</ion-item>
 
 			<ion-item lines="none" class="animated slideInRight delay_2">
-				<ion-label position="stacked">{{'email_address' | translate}}</ion-label>
-				<ion-input type="email" [(ngModel)]="mail" placeholder="{{'email_address' | translate}}"></ion-input>
+				<ion-label position="stacked">Adresse email</ion-label>
+				<ion-input type="email" [(ngModel)]="mail" placeholder="Adresse email"></ion-input>
 			</ion-item>
 
 			<ion-item lines="none" class="animated slideInRight delay_2">
-				<ion-label position="stacked">{{'phone_number' | translate}}</ion-label>
-				<ion-input type="tel" [(ngModel)]="phone" placeholder="{{'phone_number' | translate}}"></ion-input>
+				<ion-label position="stacked">Téléphone</ion-label>
+				<ion-input type="tel" [(ngModel)]="phone" placeholder="Téléphone"></ion-input>
 			</ion-item>
 
 			<ion-item lines="none" class="animated slideInRight delay_2">
-				<ion-label position="stacked">{{'password' | translate}}</ion-label>
-				<ion-input type="password" [(ngModel)]="password" placeholder="{{'password' | translate}}"></ion-input>
+				<ion-label position="stacked">Mot de passe</ion-label>
+				<ion-input type="password" [(ngModel)]="password" placeholder="Mot de passe"></ion-input>
 			</ion-item>
 
-			<ion-button slot="end" size="large" shape="round" class="btn" (click)="register()">{{'Register' | translate}}</ion-button>
+			<ion-item lines="none" class="animated slideInRight delay_2">
+				<ion-label position="stacked">Confirmer le mot de passe</ion-label>
+				<ion-input type="password" [(ngModel)]="confirmpassword" placeholder="Confirmer le mot de passe"></ion-input>
+			</ion-item>
+
+			<ion-button slot="end" size="large" shape="round" class="btn" (click)="register()">S'enregistrer</ion-button>
 
 
 		</ion-list>
