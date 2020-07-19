@@ -3,7 +3,7 @@
 		
  		<ion-title>
 			 Messages
-			 <ion-icon class="ion-float-end zmdi zmdi-more ion-text-end" (click)="gologin()"></ion-icon>
+			 <ion-icon class="ion-float-end zmdi zmdi-more ion-text-end" (click)="selectOption()"></ion-icon>
  		</ion-title>
  	</ion-toolbar>
  </ion-header>
@@ -19,8 +19,8 @@
  					</div>
  				</div>
  				<div class="text-box">
- 					<h2 class="d-flex"><span>{{conversation.name}}</span> <small>{{conversation.lastMessageDate}}</small></h2>
- 					<p class="d-flex"><span class="message">{{conversation.lastMessage}}</span>
+ 					<h2 class="d-flex"><span>{{conversation.name}}</span> <small><!--{{conversation.lastMessageDate}}--></small></h2>
+ 					<p class="d-flex"><span class="message"><!--{{conversation.lastMessage}}--></span>
  						<!--<span class="end">555</span> -->
  					</p>
  				</div>

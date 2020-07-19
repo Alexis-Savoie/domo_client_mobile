@@ -37,9 +37,38 @@ export class AuthService {
         this.storage.setItem('user', { id_user: data.id_user, token: data.token })
         this.id_user = data.id_user;
         this.token = data.token;
-        this.isLoggedIn = true;
-        this.alertService.presentToast("Logged In");
-        this.navCtrl.navigateRoot('/tabs');
+        
+
+        // Check if the user is ban
+        this.http.request('GET', this.env.API_URL + '/user/isBlocked/' + data.id_user.toString() + "/" + data.token)
+          .subscribe((data2: any) => {
+            if (data2.isBlocked == 0)
+            {
+              this.isLoggedIn = true;
+              this.alertService.presentToast("Connecté");
+              this.navCtrl.navigateRoot('/tabs');
+            }
+            else 
+            {
+              this.alertService.presentToast("Désolé mais vous êtes actuellement bloqué");
+            }
+            
+
+
+          }, ((error: any) => {
+            console.log("data error : ")
+            console.log(error.error)
+            // Managed by the API error
+            if ('error' in error.error) {
+              this.alertService.presentToast(error.error.message);
+            }
+            else {
+              this.alertService.presentToast("Server error");
+            }
+          })
+          )
+
+
       }
       else {
         this.alertService.presentToast("Server error");
@@ -79,7 +108,7 @@ export class AuthService {
           console.log(data)
           this.storage.remove('user')
           this.isLoggedIn = false;
-          this.alertService.presentToast("Logout");
+          this.alertService.presentToast("Déconnexion");
           this.navCtrl.navigateRoot('/login');
         }
       }, ((error: any) => {
@@ -104,7 +133,7 @@ export class AuthService {
       console.log(data.error)
       // If returned data with the POST request is valid log the user in
       if ('error' in data) {
-        this.alertService.presentToast("Creation successfull !");
+        this.alertService.presentToast("Votre compte à été créer avec succès");
         this.navCtrl.navigateRoot('/login');
       }
       else {

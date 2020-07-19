@@ -48,11 +48,14 @@ export class ChattingPage implements OnInit {
     private storage: NativeStorage,
     private alertService: AlertService,
     private authService: AuthService,
+    private actionSheetController: ActionSheetController,
     private navCtrl: NavController,
     private conversationService: ConversationService) { }
 
-  ngOnInit() {
 
+
+  ngOnInit() {
+    
 
     // get params from previous page
     this.sub = this.aRoute.params.subscribe(params => {
@@ -74,16 +77,7 @@ export class ChattingPage implements OnInit {
           this.conversationService.getConversationMessage(this.id_conversation)
 
 
-          // Update chat in real time using socket.io
-          this.socket.connect();
-          console.log("join the conv with " + this.id_conversation)
-          this.socket.emit('join_conv', this.id_conversation);
 
-          this.socket.fromEvent('message').subscribe((message: any) => {
-            console.log("received message data : ")
-            console.log(message)
-            this.conversationService.messages.push({ id_user: message.id_user, text: message.text, sendDate: message.sendDate });
-          });
 
         }, error => {
           console.log("no data force logout")
@@ -92,12 +86,23 @@ export class ChattingPage implements OnInit {
       );
 
 
+    // Update chat in real time using socket.io
+    //this.socket.connect();
+    console.log("join the conv with " + this.id_conversation)
+    this.socket.emit('join_conv', this.id_conversation);
+
+    this.socket.fromEvent('message').subscribe((message: any) => {
+      console.log("received message data : ")
+      console.log(message)
+      this.conversationService.messages.push({ id_user: message.id_user, text: message.text, sendDate: message.sendDate });
+    });
+
 
   }
 
   ngOnDestroy() {
-    //this.socket.emit('leave_conv', this.id_conversation);
-    this.socket.disconnect();
+    this.socket.emit('leave_conv', this.id_conversation);
+    //this.socket.disconnect();
   }
 
 
@@ -143,6 +148,32 @@ export class ChattingPage implements OnInit {
   ionViewDidLeave() {
     console.log("ionViewDidLeave")
 
+  }
+
+
+
+  async selectOption() {
+    const actionSheet = await this.actionSheetController.create({
+      //header: "",
+      buttons: [{
+        text: 'Paramètres',
+        handler: () => {
+
+        }
+      },
+      {
+        text: 'Déconnexion',
+        handler: () => {
+          this.logout()
+        }
+      },
+      {
+        text: 'Retour',
+        role: 'cancel'
+      }
+      ]
+    });
+    await actionSheet.present();
   }
 
 

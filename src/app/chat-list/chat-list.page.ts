@@ -33,6 +33,7 @@ export class ChatListPage implements OnInit {
     public popoverCtrl: PopoverController,
     public contacts: Contacts,
     private env: EnvService,
+    private actionSheetController: ActionSheetController,
     private alertService: AlertService,
     private authService: AuthService) { }
 
@@ -99,6 +100,7 @@ export class ChatListPage implements OnInit {
       );
   }
 
+  
   chatting(id_conversation, name, pp) {
     console.log(id_conversation)
     this.route.navigate(['./chatting', id_conversation, name, pp]);
@@ -128,9 +130,27 @@ export class ChatListPage implements OnInit {
 
 
   async selectOption() {
-
-
-    
+    const actionSheet = await this.actionSheetController.create({
+        //header: "",
+        buttons: [{
+                text: 'Paramètres',
+                handler: () => {
+                    
+                }
+            },
+            {
+                text: 'Déconnexion',
+                handler: () => {
+                  this.logout()
+                }
+            },
+            {
+                text: 'Retour',
+                role: 'cancel'
+            }
+        ]
+    });
+    await actionSheet.present();
 }
 
 }

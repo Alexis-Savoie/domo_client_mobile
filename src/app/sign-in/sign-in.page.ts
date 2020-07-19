@@ -5,6 +5,7 @@ import { NgForm } from '@angular/forms';
 import { AuthService } from 'src/services/auth.service';
 import { AlertService } from 'src/services/alert.service';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
+import { Router } from '@angular/router';
 
 
 
@@ -25,6 +26,7 @@ export class SignInPage implements OnInit {
     private authService: AuthService,
     private navCtrl: NavController,
     private storage: NativeStorage,
+    private route: Router,
     private alertService: AlertService
   ) { }
 
@@ -52,14 +54,14 @@ export class SignInPage implements OnInit {
 
     this.authService.isLoggedIn = false;
 
-    this.phone = "0761134170"
-    this.password = "bonjour"
+    this.phone = "0761134172"
+    this.password = "bonjouratousse"
 
   }
 
 
   goRegister() {
-    this.navCtrl.navigateRoot(['./register']);
+    this.route.navigate(['./register']);
   }
 
     login(form: NgForm) {
