@@ -36,8 +36,10 @@ export class ConversationService {
     this.storage.getItem('user')
       .then(
         data => {
+          console.log( '/user/getConversation/' + data.id_user.toString() + "/" + data.token)
           this.http.request('GET', this.env.API_URL + '/user/getConversation/' + data.id_user.toString() + "/" + data.token)
             .subscribe((data2: any) => {
+              console.log("yorequest")
               this.conversations = []
               // Get data for each conversation
               data2.conversation.forEach(conversation => {
