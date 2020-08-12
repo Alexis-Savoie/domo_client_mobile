@@ -201,7 +201,6 @@ export class ChattingPage implements OnInit {
             const formData = new FormData();
 
             formData.append('token', data.token);
-            formData.append('id_user', data.id_user);
             formData.append('id_conversation', id_conversation);
             formData.append('text', message);
 
@@ -304,7 +303,6 @@ export class ChattingPage implements OnInit {
 
                     var params = <any>{};
                     params.token = user.token;
-                    params.id_user = user.id_user;
                     params.id_conversation = this.id_conversation;
                     params.text = "test upload fichier";
                     params.documentType = "image";

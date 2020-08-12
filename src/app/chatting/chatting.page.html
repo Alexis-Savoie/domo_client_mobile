@@ -23,8 +23,7 @@
 
 <ion-content >
 	<div class="chat_container d-flex"  *ngFor="let message of conversationService.messages">
-
-	   <div  *ngIf="message.id_user == this.id_user" class="chat-box d-flex send">
+	   <div  *ngIf="message.id_user != this.id_user" class="chat-box d-flex send">
 		   <div class="chat">
 			   <div class="chat_detail">
 				   <div class="text">
@@ -35,7 +34,7 @@
 		   <p><!--{{message.sendDate}}--></p>
 		</div>
 
-   		<div *ngIf="message.id_user != this.id_user" class="chat-box d-flex received">
+   		<div *ngIf="message.id_user == this.id_user" class="chat-box d-flex received">
 		   <div class="chat">
 			   <div class="chat_detail">
 				   <div class="text">
