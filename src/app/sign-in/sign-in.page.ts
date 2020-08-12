@@ -32,7 +32,6 @@ export class SignInPage implements OnInit {
 
 
   ngOnInit() {
-
     this.storage.getItem('user')
     .then(
       data => {

@@ -34,13 +34,13 @@ export class AuthService {
       console.log(data.error)
       // If returned data with the POST request is valid log the user in
       if ('error' in data) {
-        this.storage.setItem('user', { id_user: data.id_user, token: data.token })
+        this.storage.setItem('user', { token: data.token })
         this.id_user = data.id_user;
         this.token = data.token;
         
 
         // Check if the user is ban
-        this.http.request('GET', this.env.API_URL + '/user/isBlocked/' + data.id_user.toString() + "/" + data.token)
+        this.http.request('GET', this.env.API_URL + '/user/isBlocked/' + data.token)
           .subscribe((data2: any) => {
             if (data2.isBlocked == 0)
             {
@@ -98,7 +98,7 @@ export class AuthService {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
       }),
-      body: { id_user: id_user.toString(), token: token }
+      body: { token: token }
     }
 
     return this.http.request('DELETE', this.env.API_URL + '/user/logout', options)
@@ -191,4 +191,6 @@ export class AuthService {
       }
     );
   }
+
+
 }

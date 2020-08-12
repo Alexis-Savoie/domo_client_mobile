@@ -75,8 +75,8 @@ export class ChatListPage implements OnInit {
     this.storage.getItem('user')
       .then(
         data => {
-            console.log('/user/checkPhone/' + data.id_user.toString() + "/" + data.token + "/" + phoneNumber.toString())
-            this.http.request('GET', this.env.API_URL + '/user/checkPhone/' + data.id_user.toString() + "/" + data.token + "/" + phoneNumber.toString())
+            console.log('/user/checkPhone/' + data.token + "/" + phoneNumber.toString())
+            this.http.request('GET', this.env.API_URL + '/user/checkPhone/' + data.token + "/" + phoneNumber.toString())
               .subscribe((data2: any) => {
                 //console.log("SUCCESS ??? " + phoneNumber.toString())
                 //console.log(data2)

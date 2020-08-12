@@ -36,8 +36,8 @@ export class ConversationService {
     this.storage.getItem('user')
       .then(
         data => {
-          console.log( '/user/getConversation/' + data.id_user.toString() + "/" + data.token)
-          this.http.request('GET', this.env.API_URL + '/user/getConversation/' + data.id_user.toString() + "/" + data.token)
+          console.log( '/user/getConversation/' + data.token)
+          this.http.request('GET', this.env.API_URL + '/user/getConversation/' + data.token)
             .subscribe((data2: any) => {
               console.log("yorequest")
               this.conversations = []
@@ -79,7 +79,7 @@ export class ConversationService {
     this.storage.getItem('user')
       .then(
         data => {
-          this.http.request('GET', this.env.API_URL + '/user/message/getMessage/' + data.id_user.toString() + "/" + data.token + "/" + id_conversation)
+          this.http.request('GET', this.env.API_URL + '/user/message/getMessage/' + data.token + "/" + id_conversation)
             .subscribe((data2: any) => {
               this.messages = []
               console.log("messages : ")
