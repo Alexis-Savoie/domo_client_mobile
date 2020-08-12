@@ -34,7 +34,7 @@ export class AuthService {
       console.log(data.error)
       // If returned data with the POST request is valid log the user in
       if ('error' in data) {
-        this.storage.setItem('user', { token: data.token })
+        this.storage.setItem('user', {id_user: data.id_user, token: data.token })
         this.id_user = data.id_user;
         this.token = data.token;
         

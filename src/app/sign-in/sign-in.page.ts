@@ -63,8 +63,12 @@ export class SignInPage implements OnInit {
     this.route.navigate(['./register']);
   }
 
-    login(form: NgForm) {
-      this.authService.login(this.phone, this.password)
-    }
+  login(form: NgForm) {
+    this.authService.login(this.phone, this.password)
+  }
+
+  testroute() {
+    this.route.navigate(['./tabs']);
+  }
 
 }
