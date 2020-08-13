@@ -66,9 +66,6 @@ export class AppComponent {
     }
   }
 
-
-
-
     // When Logout Button is pressed 
     logout() {
 
@@ -78,13 +75,5 @@ export class AppComponent {
           this.authService.logout(data.id_user, data.token)
         }
       );
-
-
-
     }
-
-
-
-
-
 }

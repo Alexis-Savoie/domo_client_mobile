@@ -100,6 +100,11 @@ const routes: Routes = [
     path: 'change-language',
     loadChildren: () => import('./change-language/change-language.module').then( m => m.ChangeLanguagePageModule), canActivate: [AuthGuard]
   },
+  {
+    path: 'premium-pay',
+    loadChildren: () => import('./premium-pay/premium-pay.module').then( m => m.PremiumPayPageModule), canActivate: [AuthGuard]
+  },
+
 ];
 
 

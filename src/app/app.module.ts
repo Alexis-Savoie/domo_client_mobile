@@ -31,6 +31,8 @@ import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 const config: SocketIoConfig = { url: 'https://51.83.133.1:3000', options: {} };
 
 
+import { Stripe } from '@ionic-native/stripe/ngx';
+
 
 
 
@@ -51,6 +53,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     VideocallPageModule,
     PicturePageModule,
     SocketIoModule.forRoot(config),
+    
 
     
     TranslateModule.forRoot({
@@ -71,6 +74,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     FileTransfer,
     NativeStorage,
     Contacts,
+    Stripe,
     
   ],
   bootstrap: [AppComponent]
