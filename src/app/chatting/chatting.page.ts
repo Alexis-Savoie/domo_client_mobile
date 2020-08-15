@@ -69,8 +69,8 @@ export class ChattingPage implements OnInit {
       .then(
         data => {
           this.id_user = data.id_user
-          console.log("This is user : " + this.id_user)
-          console.log("This is conversation : " + this.id_conversation + " " + this.convName)
+          //console.log("This is user : " + this.id_user)
+          //console.log("This is conversation : " + this.id_conversation + " " + this.convName)
 
 
           // Get conversation messages
@@ -80,7 +80,7 @@ export class ChattingPage implements OnInit {
 
 
         }, error => {
-          console.log("no data force logout")
+          //console.log("no data force logout")
           this.route.navigate(['./login']);
         }
       );
@@ -88,12 +88,12 @@ export class ChattingPage implements OnInit {
 
     // Update chat in real time using socket.io
     //this.socket.connect();
-    console.log("join the conv with " + this.id_conversation)
+    //console.log("join the conv with " + this.id_conversation)
     this.socket.emit('join_conv', this.id_conversation);
 
     this.socket.fromEvent('message').subscribe((message: any) => {
-      console.log("received message data : ")
-      console.log(message)
+      //console.log("received message data : ")
+      //console.log(message)
       this.conversationService.messages.push({ id_user: message.id_user, text: message.text, sendDate: message.sendDate });
     });
 
@@ -124,7 +124,7 @@ export class ChattingPage implements OnInit {
         data => {
           this.authService.logout(data.id_user, data.token)
         }, error => {
-          console.log("no data force logout")
+          //console.log("no data force logout")
           this.route.navigate(['./login']);
         }
       );
@@ -132,21 +132,21 @@ export class ChattingPage implements OnInit {
 
 
   ionViewWillEnter() {
-    console.log("ionViewWillEnter")
+    //console.log("ionViewWillEnter")
   }
 
   ionViewDidEnter() {
-    console.log("ionViewDidEnter")
+    //console.log("ionViewDidEnter")
 
   }
 
   ionViewWillLeave() {
-    console.log("ionViewWillLeave")
+    //console.log("ionViewWillLeave")
 
   }
 
   ionViewDidLeave() {
-    console.log("ionViewDidLeave")
+    //console.log("ionViewDidLeave")
 
   }
 
@@ -210,14 +210,14 @@ export class ChattingPage implements OnInit {
                 if ('error' in data) {
                 }
                 else {
-                  console.log("bonjour c'est le send-message : ")
-                  console.log({ id_conversation: id_conversation, id_user: data.id_user, text: message, sendDate: todayDateString })
+                 // console.log("bonjour c'est le send-message : ")
+                  //console.log({ id_conversation: id_conversation, id_user: data.id_user, text: message, sendDate: todayDateString })
                   this.socket.emit('send-message', { id_conversation: id_conversation, id_user: data.id_user, text: message, sendDate: todayDateString });
                   this.message = ""
                 }
               }, ((error: any) => {
-                console.log("data error : ")
-                console.log(error.error)
+                //console.log("data error : ")
+                //console.log(error.error)
                 // Managed by the API error
                 if ('error' in error.error) {
                   this.alertService.presentToast(error.error.message);
@@ -227,9 +227,9 @@ export class ChattingPage implements OnInit {
                 }
               })
               )
-            console.log("this is a message")
+            //console.log("this is a message")
           }, error => {
-            console.log("no data force logout")
+            //console.log("no data force logout")
             this.route.navigate(['./login']);
           }
         );

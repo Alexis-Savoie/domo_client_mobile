@@ -12,20 +12,17 @@ import { ActionSheetController } from '@ionic/angular';
 import { PopoverController } from '@ionic/angular';
 import { NavController, AlertController } from '@ionic/angular';
 
-import { Stripe } from '@ionic-native/stripe/ngx';
-
-
 @Component({
-  selector: 'app-premium-pay',
-  templateUrl: './premium-pay.page.html',
-  styleUrls: ['./premium-pay.page.scss'],
+  selector: 'app-change-password',
+  templateUrl: './change-password.page.html',
+  styleUrls: ['./change-password.page.scss'],
 })
-export class PremiumPayPage implements OnInit {
+export class ChangePasswordPage implements OnInit {
 
-  number: string = '4242424242424242';
-  expMonth: number = 12;
-  expYear: number = 2021;
-  cvc: string = '220';
+  currentPassword: string = 'bonjouratousse';
+  newPassword: string = '';
+
+
 
   constructor(private route: Router,
     private http: HttpClient,
@@ -38,53 +35,38 @@ export class PremiumPayPage implements OnInit {
     private alertService: AlertService,
     public navCtrl: NavController,
     private alertCtrl: AlertController,
-    private stripe: Stripe,
     private authService: AuthService) { }
 
   ngOnInit() {
   }
 
 
+  updatePassword() {
 
-  checkout() {
-    this.stripe.setPublishableKey('pk_test_51GvfZ1IRCdwqr9uBgPrDb91ZkfO3eopfL3hfRLT6DIkpbrgMBXnIphQra4Dbfz1bPYwv01ojZ71BdiC9gwFJejEo00WeA1rPHS');
-
-    let card = {
-      number: this.number,
-      expMonth: this.expMonth,
-      expYear: this.expYear,
-      cvc: this.cvc
-    }
-
-    this.stripe.createCardToken(card)
-      .then(stripeToken => {
 
         this.storage.getItem('user')
           .then(
             data => {
-              this.http.post(this.env.API_URL + '/user/addPremium', { token: data.token, stripeEmail: "alexis@gmail.com", stripeToken: stripeToken.id }
-              ).subscribe((data2: any) => {
-                //console.log("data premium : ")
-                //console.log(data2)
+              let options = {
+                headers: new HttpHeaders({
+                  'Content-Type': 'application/json',
+                }),
+                body: { token: data.token, password: this.currentPassword, password2: this.newPassword }
+              }
+              this.http.request('PUT', this.env.API_URL + '/user/updateUserPassword', options)
+              .subscribe((data2: any) => {
                 if(data2.error == false)
                 {
-                  this.alertService.presentToast("Vous êtes maintenant premium");
-                  this.navCtrl.navigateRoot(['./tabs']);
+                  this.alertService.presentToast("Mise à jour réussite");
+                  this.route.navigate(['./tabs']);
                 }
                 else
                 {
-                  this.alertService.presentToast(data2.message);
+                  this.alertService.presentToast(data2.error.message);
                 }
-
               }, ((error: any) => {
-                //console.log("data error : ")
-                //console.log(error)
-                // Managed by the API error
-                if ('error' in error.error) {
+                if ('error' in error) {
                   this.alertService.presentToast(error.error.message);
-                }
-                else {
-                  this.alertService.presentToast("Server error");
                 }
               })
               )
@@ -93,11 +75,6 @@ export class PremiumPayPage implements OnInit {
               //console.log("no user error !")
             }
           );
-      })
-      .catch(error => {
-        this.alertService.presentToast(error)
-      });
+
   }
-
-
 }

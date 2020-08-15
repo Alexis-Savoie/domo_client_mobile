@@ -37,7 +37,7 @@ export class SignInPage implements OnInit {
       data => {
         if(data.id_user)
         {
-          console.log("hello login : " + data.id_user)
+          //console.log("hello login : " + data.id_user)
           this.navCtrl.navigateRoot(['./tabs']);
         }
         else 
