@@ -104,6 +104,15 @@ const routes: Routes = [
     path: 'premium-pay',
     loadChildren: () => import('./premium-pay/premium-pay.module').then( m => m.PremiumPayPageModule), canActivate: [AuthGuard]
   },
+  {
+    path: 'app-settings',
+    loadChildren: () => import('./app-settings/app-settings.module').then( m => m.AppSettingsPageModule), canActivate: [AuthGuard]
+  },
+  {
+    path: 'change-password',
+    loadChildren: () => import('./change-password/change-password.module').then( m => m.ChangePasswordPageModule), canActivate: [AuthGuard]
+  },
+
 
 ];
 

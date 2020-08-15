@@ -87,7 +87,7 @@ export class ChatListPage implements OnInit {
     this.storage.getItem('user')
       .then(
         data => {
-          console.log('/user/checkPhone/' + data.token + "/" + phoneNumber.toString())
+          //console.log('/user/checkPhone/' + data.token + "/" + phoneNumber.toString())
           this.http.request('GET', this.env.API_URL + '/user/checkPhone/' + data.token + "/" + phoneNumber.toString())
             .subscribe((data2: any) => {
               //console.log("SUCCESS ??? " + phoneNumber.toString())
@@ -95,7 +95,7 @@ export class ChatListPage implements OnInit {
               // Get conversations now that updated
               this.conversationService.getUserContacts()
             }, ((error: any) => {
-              console.log(error.error)
+              //console.log(error.error)
               // Managed by the API error
               if ('error' in error.error) {
                 //this.alertService.presentToast(error.error.message);
@@ -114,7 +114,7 @@ export class ChatListPage implements OnInit {
 
 
   chatting(id_conversation, name, pp) {
-    console.log(id_conversation)
+    //console.log(id_conversation)
     this.route.navigate(['./chatting', id_conversation, name, pp]);
   }
   new_chat() {
@@ -147,7 +147,7 @@ export class ChatListPage implements OnInit {
       buttons: [{
         text: 'Paramètres',
         handler: () => {
-
+          this.route.navigate(['./app-settings']);
         }
       },
       {
@@ -190,13 +190,13 @@ export class ChatListPage implements OnInit {
             data => {
               this.http.post(this.env.API_URL + '/user/addPremium', { token: data.token, stripeEmail: "alexis@gmail.com", stripeToken: stripeToken.id }
               ).subscribe((data: any) => {
-                console.log("data premium : ")
-                console.log(data)
+                //console.log("data premium : ")
+                //console.log(data)
                 // If returned data with the POST request is valid log the user in
 
               }, ((error: any) => {
-                console.log("data error : ")
-                console.log(error)
+                //console.log("data error : ")
+                //console.log(error)
                 // Managed by the API error
                 if ('error' in error.error) {
                   this.alertService.presentToast(error.error.message);
@@ -208,7 +208,7 @@ export class ChatListPage implements OnInit {
               )
 
             }, error => {
-              console.log("no user error !")
+              //console.log("no user error !")
             }
           );
       })
@@ -237,7 +237,7 @@ export class ChatListPage implements OnInit {
             }
             
           }, ((error: any) => {
-            console.log(error.error)
+            //console.log(error.error)
             // Managed by the API error
             if ('error' in error.error) {
               this.alertService.presentToast(error.error.message);
