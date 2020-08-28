@@ -53,7 +53,6 @@ export class ConversationService {
                 //{ pp: ("https://eu.ui-avatars.com/api/?name=" + conversation.firstname + "+" + conversation.name), name: conversation.name, firstname: conversation.firstname, lastMessage: "Dernier message envoyé", lastMessageDate: "Xm" }
               });
 
-
             }, ((error: any) => {
               //console.log("data error : ")
               //console.log(error.error)
@@ -85,7 +84,12 @@ export class ConversationService {
               //console.log("messages : ")
               //console.log(data2)
               data2.messages.forEach(message => {
-                this.messages.push({ id_user: message.message_idUser, text: message.text, sendDate: message.sendDate })
+                console.log("salut c'est un message : ")
+                console.log(message)
+                if (message.urlDocument != null)
+                  this.messages.push({ id_user: message.message_idUser, text: message.text, sendDate: message.sendDate, urlDocument: message.urlDocument })
+                else
+                  this.messages.push({ id_user: message.message_idUser, text: message.text, sendDate: message.sendDate })
               });
 
 

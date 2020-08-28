@@ -16,6 +16,8 @@ import { AlertService } from 'src/services/alert.service';
 import { EnvService } from 'src/services/env.service';
 import { AuthService } from 'src/services/auth.service';
 import { HttpClient } from '@angular/common/http';
+import { HTTP } from '@ionic-native/http/ngx'; //<=== Import this 
+import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 
 
 @Component({
@@ -50,6 +52,8 @@ export class ChattingPage implements OnInit {
     private authService: AuthService,
     private actionSheetController: ActionSheetController,
     private navCtrl: NavController,
+    private httpSSL: HTTP, //<=== define this too
+    private photoViewer: PhotoViewer,
     private conversationService: ConversationService) { }
 
 
@@ -177,6 +181,18 @@ export class ChattingPage implements OnInit {
   }
 
 
+  showPicture(urlDocument){
+    console.log("SHOWPICTURE!! : " + urlDocument)
+    var options = {
+      share: true, // default is false
+      closeButton: true, // default is true
+      copyToReference: false, // default is false
+      headers: '',  // If this is not provided, an exception will be triggered
+      piccasoOptions: { } // If this is not provided, an exception will be triggered
+  };
+  
+    this.photoViewer.show(urlDocument.toString(), '', options);
+  }
 
   //#region send a message
   sendMessage(id_conversation, message, document) {
@@ -250,39 +266,18 @@ export class ChattingPage implements OnInit {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   selectDocument() {
+
+    this.httpSSL.setServerTrustMode("pinned") //<=== Add this function 
+    .then(() => {
+    console.log("Congratulaions, you have set up SSL Pinning.")
+    })
+    .catch(() => {
+    console.error("Opss, SSL pinning failed.")
+    });
+
+
+    
     this.storage.getItem('user')
       .then(
         user => {
@@ -304,11 +299,20 @@ export class ChattingPage implements OnInit {
                     var params = <any>{};
                     params.token = user.token;
                     params.id_conversation = this.id_conversation;
-                    params.text = "test upload fichier";
+                    params.text = this.message;
                     params.documentType = "image";
                     params.documentSize = 25;
 
                     uploadOpts.params = params;
+                    
+/*
+
+                    uploadOpts.headers = {
+                      Connection: "close"
+                    };
+                    uploadOpts.chunkedMode = false
+*/
+                    
                     console.log("upload options : ")
                     console.log(uploadOpts)
 
@@ -334,8 +338,6 @@ export class ChattingPage implements OnInit {
           console.log("no data force logout")
         }
       );
-
-
 
   }
 

@@ -9,6 +9,7 @@ import { MyEvent } from 'src/services/myevent.services';
 import { AuthService } from '../services/auth.service';
 import { AlertService } from '../services/alert.service';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
+import { HTTP } from '@ionic-native/http/ngx'; //<=== Import this 
 
 
 @Component({
@@ -25,6 +26,7 @@ export class AppComponent {
     private statusBar: StatusBar,
     private authService: AuthService,
     private alertService: AlertService,
+    private httpSSL: HTTP, //<=== define this too
     private storage: NativeStorage,
     private translate: TranslateService, private myEvent: MyEvent) {
     this.initializeApp();
@@ -40,6 +42,16 @@ export class AppComponent {
       //this.splashScreen.hide();
       this.authService.getToken();
       this.splashScreen.hide();
+      this.platform.ready() 
+      .then(() => {
+      this.httpSSL.setServerTrustMode("pinned") //<=== Add this function 
+      .then(() => {
+      console.log("Congratulaions, you have set up SSL Pinning.")
+      })
+      .catch(() => {
+      console.error("Opss, SSL pinning failed.")
+      });
+      })
 
       let defaultLang = window.localStorage.getItem(Constants.KEY_DEFAULT_LANGUAGE);
       this.globalize(defaultLang);

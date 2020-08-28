@@ -54,7 +54,7 @@ export class SignInPage implements OnInit {
     this.authService.isLoggedIn = false;
 
     this.phone = "0761134172"
-    this.password = "bonjouratousse"
+    this.password = "bonjour"
 
   }
 

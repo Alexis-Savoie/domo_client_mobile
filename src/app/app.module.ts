@@ -12,6 +12,7 @@ import { PicturePageModule } from './picture/picture.module';
 import { TranslateLoader, TranslateModule, TranslatePipe } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HTTP } from '@ionic-native/http/ngx';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -28,10 +29,11 @@ import { Contacts  } from '@ionic-native/contacts/ngx';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
 
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
-const config: SocketIoConfig = { url: 'https://51.83.133.1:3000', options: {} };
+const config: SocketIoConfig = { url: 'https://apidomo.crabdance.com:3000', options: {} };
 
 
 import { Stripe } from '@ionic-native/stripe/ngx';
+import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 
 
 
@@ -47,7 +49,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    HttpClientModule,
+    HttpClientModule,    
     TranslateModule,
     VoicecallPageModule,
     VideocallPageModule,
@@ -74,6 +76,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     FileTransfer,
     NativeStorage,
     Contacts,
+    HTTP,
+    PhotoViewer,
     Stripe,
     
   ],

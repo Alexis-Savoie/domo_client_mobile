@@ -44,6 +44,7 @@
         <splash density="port-xhdpi" src="resources/android/splash/drawable-port-xhdpi-screen.png" />
         <splash density="port-xxhdpi" src="resources/android/splash/drawable-port-xxhdpi-screen.png" />
         <splash density="port-xxxhdpi" src="resources/android/splash/drawable-port-xxxhdpi-screen.png" />
+        <resource-file src="src/certificates/certificate.cer" target="src/certificates/certificate.cer" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
