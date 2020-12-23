@@ -32,13 +32,12 @@ export class SignInPage implements OnInit {
 
 
   ngOnInit() {
-
     this.storage.getItem('user')
     .then(
       data => {
         if(data.id_user)
         {
-          console.log("hello login : " + data.id_user)
+          //console.log("hello login : " + data.id_user)
           this.navCtrl.navigateRoot(['./tabs']);
         }
         else 
@@ -55,7 +54,7 @@ export class SignInPage implements OnInit {
     this.authService.isLoggedIn = false;
 
     this.phone = "0761134172"
-    this.password = "bonjouratousse"
+    this.password = "bonjour"
 
   }
 
@@ -64,8 +63,12 @@ export class SignInPage implements OnInit {
     this.route.navigate(['./register']);
   }
 
-    login(form: NgForm) {
-      this.authService.login(this.phone, this.password)
-    }
+  login(form: NgForm) {
+    this.authService.login(this.phone, this.password)
+  }
+
+  testroute() {
+    this.route.navigate(['./tabs']);
+  }
 
 }

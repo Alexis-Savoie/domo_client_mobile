@@ -16,6 +16,8 @@ import { AlertService } from 'src/services/alert.service';
 import { EnvService } from 'src/services/env.service';
 import { AuthService } from 'src/services/auth.service';
 import { HttpClient } from '@angular/common/http';
+import { HTTP } from '@ionic-native/http/ngx'; //<=== Import this 
+import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 
 
 @Component({
@@ -50,6 +52,8 @@ export class ChattingPage implements OnInit {
     private authService: AuthService,
     private actionSheetController: ActionSheetController,
     private navCtrl: NavController,
+    private httpSSL: HTTP, //<=== define this too
+    private photoViewer: PhotoViewer,
     private conversationService: ConversationService) { }
 
 
@@ -69,8 +73,8 @@ export class ChattingPage implements OnInit {
       .then(
         data => {
           this.id_user = data.id_user
-          console.log("This is user : " + this.id_user)
-          console.log("This is conversation : " + this.id_conversation + " " + this.convName)
+          //console.log("This is user : " + this.id_user)
+          //console.log("This is conversation : " + this.id_conversation + " " + this.convName)
 
 
           // Get conversation messages
@@ -80,7 +84,7 @@ export class ChattingPage implements OnInit {
 
 
         }, error => {
-          console.log("no data force logout")
+          //console.log("no data force logout")
           this.route.navigate(['./login']);
         }
       );
@@ -88,12 +92,12 @@ export class ChattingPage implements OnInit {
 
     // Update chat in real time using socket.io
     //this.socket.connect();
-    console.log("join the conv with " + this.id_conversation)
+    //console.log("join the conv with " + this.id_conversation)
     this.socket.emit('join_conv', this.id_conversation);
 
     this.socket.fromEvent('message').subscribe((message: any) => {
-      console.log("received message data : ")
-      console.log(message)
+      //console.log("received message data : ")
+      //console.log(message)
       this.conversationService.messages.push({ id_user: message.id_user, text: message.text, sendDate: message.sendDate });
     });
 
@@ -124,7 +128,7 @@ export class ChattingPage implements OnInit {
         data => {
           this.authService.logout(data.id_user, data.token)
         }, error => {
-          console.log("no data force logout")
+          //console.log("no data force logout")
           this.route.navigate(['./login']);
         }
       );
@@ -132,21 +136,21 @@ export class ChattingPage implements OnInit {
 
 
   ionViewWillEnter() {
-    console.log("ionViewWillEnter")
+    //console.log("ionViewWillEnter")
   }
 
   ionViewDidEnter() {
-    console.log("ionViewDidEnter")
+    //console.log("ionViewDidEnter")
 
   }
 
   ionViewWillLeave() {
-    console.log("ionViewWillLeave")
+    //console.log("ionViewWillLeave")
 
   }
 
   ionViewDidLeave() {
-    console.log("ionViewDidLeave")
+    //console.log("ionViewDidLeave")
 
   }
 
@@ -177,6 +181,18 @@ export class ChattingPage implements OnInit {
   }
 
 
+  showPicture(urlDocument){
+    console.log("SHOWPICTURE!! : " + urlDocument)
+    var options = {
+      share: true, // default is false
+      closeButton: true, // default is true
+      copyToReference: false, // default is false
+      headers: '',  // If this is not provided, an exception will be triggered
+      piccasoOptions: { } // If this is not provided, an exception will be triggered
+  };
+  
+    this.photoViewer.show(urlDocument.toString(), '', options);
+  }
 
   //#region send a message
   sendMessage(id_conversation, message, document) {
@@ -201,7 +217,6 @@ export class ChattingPage implements OnInit {
             const formData = new FormData();
 
             formData.append('token', data.token);
-            formData.append('id_user', data.id_user);
             formData.append('id_conversation', id_conversation);
             formData.append('text', message);
 
@@ -211,14 +226,14 @@ export class ChattingPage implements OnInit {
                 if ('error' in data) {
                 }
                 else {
-                  console.log("bonjour c'est le send-message : ")
-                  console.log({ id_conversation: id_conversation, id_user: data.id_user, text: message, sendDate: todayDateString })
+                 // console.log("bonjour c'est le send-message : ")
+                  //console.log({ id_conversation: id_conversation, id_user: data.id_user, text: message, sendDate: todayDateString })
                   this.socket.emit('send-message', { id_conversation: id_conversation, id_user: data.id_user, text: message, sendDate: todayDateString });
                   this.message = ""
                 }
               }, ((error: any) => {
-                console.log("data error : ")
-                console.log(error.error)
+                //console.log("data error : ")
+                //console.log(error.error)
                 // Managed by the API error
                 if ('error' in error.error) {
                   this.alertService.presentToast(error.error.message);
@@ -228,9 +243,9 @@ export class ChattingPage implements OnInit {
                 }
               })
               )
-            console.log("this is a message")
+            //console.log("this is a message")
           }, error => {
-            console.log("no data force logout")
+            //console.log("no data force logout")
             this.route.navigate(['./login']);
           }
         );
@@ -251,39 +266,18 @@ export class ChattingPage implements OnInit {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   selectDocument() {
+
+    this.httpSSL.setServerTrustMode("pinned") //<=== Add this function 
+    .then(() => {
+    console.log("Congratulaions, you have set up SSL Pinning.")
+    })
+    .catch(() => {
+    console.error("Opss, SSL pinning failed.")
+    });
+
+
+    
     this.storage.getItem('user')
       .then(
         user => {
@@ -304,13 +298,21 @@ export class ChattingPage implements OnInit {
 
                     var params = <any>{};
                     params.token = user.token;
-                    params.id_user = user.id_user;
                     params.id_conversation = this.id_conversation;
-                    params.text = "test upload fichier";
+                    params.text = this.message;
                     params.documentType = "image";
                     params.documentSize = 25;
 
                     uploadOpts.params = params;
+                    
+/*
+
+                    uploadOpts.headers = {
+                      Connection: "close"
+                    };
+                    uploadOpts.chunkedMode = false
+*/
+                    
                     console.log("upload options : ")
                     console.log(uploadOpts)
 
@@ -336,8 +338,6 @@ export class ChattingPage implements OnInit {
           console.log("no data force logout")
         }
       );
-
-
 
   }
 

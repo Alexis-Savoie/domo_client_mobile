@@ -1,7 +1,7 @@
 <ion-header class="bg_transparent">
 	<ion-toolbar>
 		<ion-buttons slot="start">
-			<ion-back-button text="" icon="chevron-back-outline" ></ion-back-button>
+			<ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
 		</ion-buttons>
 		<ion-title>
 			<div class="profile d-flex active">
@@ -14,42 +14,50 @@
 				<span class="end">
 					<ion-icon></ion-icon>
 					<ion-icon></ion-icon>
-					<ion-icon class="zmdi zmdi-more-vert ion-text-center"  (click)="selectOption()"></ion-icon>
+					<ion-icon class="zmdi zmdi-more-vert ion-text-center" (click)="selectOption()"></ion-icon>
 				</span>
 			</div>
 		</ion-title>
 	</ion-toolbar>
 </ion-header>
 
-<ion-content >
-	<div class="chat_container d-flex"  *ngFor="let message of conversationService.messages">
+<ion-content>
+	<div class="chat_container d-flex" *ngFor="let message of conversationService.messages">
+		<div *ngIf="message.id_user == this.id_user" class="chat-box d-flex send">
+			<div class="chat">
+				<div class="chat_detail">
+					<div class="text">
+						<h2>{{message.text}}</h2>
+						<div *ngIf="message.urlDocument != null">
+							<img alt="a" src="https://apidomo.crabdance.com:3000/{{message.urlDocument}}" width="100" height="100" (click)="showPicture('https://apidomo.crabdance.com:3000/' + message.urlDocument)">
+						</div>
 
-	   <div  *ngIf="message.id_user == this.id_user" class="chat-box d-flex send">
-		   <div class="chat">
-			   <div class="chat_detail">
-				   <div class="text">
-					   <h2>{{message.text}}</h2>
-				   </div>
-			   </div>
-		   </div>
-		   <p><!--{{message.sendDate}}--></p>
+					</div>
+				</div>
+			</div>
+			<p>
+				<!--{{message.sendDate}}-->
+			</p>
 		</div>
 
-   		<div *ngIf="message.id_user != this.id_user" class="chat-box d-flex received">
-		   <div class="chat">
-			   <div class="chat_detail">
-				   <div class="text">
-					   <h2>{{message.text}}</h2>
-				   </div>
-			   </div>
-		   </div>
-		   <p><!--{{message.sendDate}}--></p>
+		<div *ngIf="message.id_user != this.id_user" class="chat-box d-flex received">
+			<div class="chat">
+				<div class="chat_detail">
+					<div class="text">
+						<h2>{{message.text}}</h2>
+						<div *ngIf="message.urlDocument != null">
+							<img alt="a" src="https://apidomo.crabdance.com:3000/{{message.urlDocument}}" width="100" height="100" (click)="showPicture('https://apidomo.crabdance.com:3000/' + message.urlDocument)">
+						</div>
+					</div>
+				</div>
+			</div>
+			<p>
+				<!--{{message.sendDate}}-->
+			</p>
 		</div>
-
 	</div>
 
 </ion-content>
-
 
 <ion-footer class="form animated slideInUp delay_3">
 	<ion-list lines="none" [ngClass]="viewType == 'active' ? 'list active':'list'">
@@ -65,7 +73,7 @@
 		<ion-item lines="none">
 			<div class="item_inner d-flex">
 				<!--<ion-icon class="zmdi zmdi-mood" ion-text-start></ion-icon>-->
-				<ion-input type="text" [(ngModel)]="message"  placeholder="Message texte"></ion-input>
+				<ion-input type="text" [(ngModel)]="message" placeholder="Message texte"></ion-input>
 				<div class="end icon_box">
 					<ion-icon class="zmdi zmdi-camera ion-text-end" (click)="selectDocument()"></ion-icon>
 					<ion-icon class="zmdi zmdi-long-arrow-up ion-text-end" (click)="sendMessage()"></ion-icon>

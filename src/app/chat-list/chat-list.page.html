@@ -7,7 +7,7 @@
  		</ion-title>
  	</ion-toolbar>
  </ion-header>
-
+ <script src="https://checkout.stripe.com/checkout.js"></script>
 <ion-content fullscreen>
 	<ion-list  lines="none" class="">
 
@@ -28,7 +28,14 @@
 		</ion-item>
 
 	</ion-list>
-	<ion-fab class="animated zoomIn delay_4" vertical="bottom" horizontal="center" slot="fixed" (click)="logout()">
+
+
+	<ion-button slot="start" size="large" shape="round" class="btn"  (click)="login()" >Connexion</ion-button>
+
+
+
+
+	<ion-fab class="animated zoomIn delay_4" vertical="bottom" horizontal="center" slot="fixed" (click)="createGroup()">
 		<ion-fab-button>
 			<ion-icon class="zmdi zmdi-comment-edit"></ion-icon>
 	</ion-fab-button>

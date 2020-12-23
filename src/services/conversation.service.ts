@@ -36,10 +36,10 @@ export class ConversationService {
     this.storage.getItem('user')
       .then(
         data => {
-          console.log( '/user/getConversation/' + data.id_user.toString() + "/" + data.token)
-          this.http.request('GET', this.env.API_URL + '/user/getConversation/' + data.id_user.toString() + "/" + data.token)
+          //console.log( '/user/getConversation/' + data.token)
+          this.http.request('GET', this.env.API_URL + '/user/getConversation/' + data.token)
             .subscribe((data2: any) => {
-              console.log("yorequest")
+              //console.log("yorequest")
               this.conversations = []
               // Get data for each conversation
               data2.conversation.forEach(conversation => {
@@ -53,10 +53,9 @@ export class ConversationService {
                 //{ pp: ("https://eu.ui-avatars.com/api/?name=" + conversation.firstname + "+" + conversation.name), name: conversation.name, firstname: conversation.firstname, lastMessage: "Dernier message envoyé", lastMessageDate: "Xm" }
               });
 
-
             }, ((error: any) => {
-              console.log("data error : ")
-              console.log(error.error)
+              //console.log("data error : ")
+              //console.log(error.error)
               // Managed by the API error
               if ('error' in error.error) {
                 this.alertService.presentToast(error.error.message);
@@ -67,7 +66,7 @@ export class ConversationService {
             })
             )
         }, error => {
-          console.log("no user error !")
+          //console.log("no user error !")
         }
       );
   }
@@ -79,19 +78,24 @@ export class ConversationService {
     this.storage.getItem('user')
       .then(
         data => {
-          this.http.request('GET', this.env.API_URL + '/user/message/getMessage/' + data.id_user.toString() + "/" + data.token + "/" + id_conversation)
+          this.http.request('GET', this.env.API_URL + '/user/message/getMessage/' + data.token + "/" + id_conversation)
             .subscribe((data2: any) => {
               this.messages = []
-              console.log("messages : ")
-              console.log(data2)
+              //console.log("messages : ")
+              //console.log(data2)
               data2.messages.forEach(message => {
-                this.messages.push({ id_user: message.message_idUser, text: message.text, sendDate: message.sendDate })
+                console.log("salut c'est un message : ")
+                console.log(message)
+                if (message.urlDocument != null)
+                  this.messages.push({ id_user: message.message_idUser, text: message.text, sendDate: message.sendDate, urlDocument: message.urlDocument })
+                else
+                  this.messages.push({ id_user: message.message_idUser, text: message.text, sendDate: message.sendDate })
               });
 
 
             }, ((error: any) => {
-              console.log("data error : ")
-              console.log(error.error)
+              //console.log("data error : ")
+              //console.log(error.error)
               // Managed by the API error
               if ('error' in error.error) {
                 this.alertService.presentToast(error.error.message);
@@ -102,7 +106,7 @@ export class ConversationService {
             })
             )
         }, error => {
-          console.log("no user error !")
+          //console.log("no user error !")
         }
       );
 

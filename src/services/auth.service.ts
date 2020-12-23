@@ -30,17 +30,17 @@ export class AuthService {
   login(phone: String, password: String) {
     return this.http.post(this.env.API_URL + '/loginUser', { phone: phone, password: password }
     ).subscribe((data: any) => {
-      console.log("data error : ")
-      console.log(data.error)
+      //console.log("data error : ")
+      //console.log(data.error)
       // If returned data with the POST request is valid log the user in
       if ('error' in data) {
-        this.storage.setItem('user', { id_user: data.id_user, token: data.token })
+        this.storage.setItem('user', {id_user: data.id_user, token: data.token, mail: data.mail })
         this.id_user = data.id_user;
         this.token = data.token;
         
 
         // Check if the user is ban
-        this.http.request('GET', this.env.API_URL + '/user/isBlocked/' + data.id_user.toString() + "/" + data.token)
+        this.http.request('GET', this.env.API_URL + '/user/isBlocked/' + data.token)
           .subscribe((data2: any) => {
             if (data2.isBlocked == 0)
             {
@@ -56,8 +56,8 @@ export class AuthService {
 
 
           }, ((error: any) => {
-            console.log("data error : ")
-            console.log(error.error)
+            //console.log("data error : ")
+            //console.log(error.error)
             // Managed by the API error
             if ('error' in error.error) {
               this.alertService.presentToast(error.error.message);
@@ -75,8 +75,8 @@ export class AuthService {
       }
 
     }, ((error: any) => {
-      console.log("data error : ")
-      console.log(error.error.error)
+      //console.log("data error : ")
+      //console.log(error.error.error)
       // Managed by the API error
       if ('error' in error.error) {
         this.alertService.presentToast(error.error.message);
@@ -92,20 +92,20 @@ export class AuthService {
 
 
   logout(id_user: Number, token: String) {
-    console.log("logout data : " + id_user + " " + token);
+    //console.log("logout data : " + id_user + " " + token);
 
     let options = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
       }),
-      body: { id_user: id_user.toString(), token: token }
+      body: { token: token }
     }
 
     return this.http.request('DELETE', this.env.API_URL + '/user/logout', options)
       .subscribe((data: any) => {
         if ('error' in data) {
-          console.log("data lol : ")
-          console.log(data)
+          //console.log("data lol : ")
+          //console.log(data)
           this.storage.remove('user')
           this.isLoggedIn = false;
           this.alertService.presentToast("Déconnexion");
@@ -113,8 +113,8 @@ export class AuthService {
         }
       }, ((error: any) => {
         if ('error' in error) {
-          console.log("error lol : ")
-          console.log(error)
+          //console.log("error lol : ")
+          //console.log(error)
           this.storage.remove('user')
           this.isLoggedIn = false;
           this.alertService.presentToast(error.error.message);
@@ -129,8 +129,8 @@ export class AuthService {
   register(name: String, firstname: String, mail: String, phone: String, password: String) {
     return this.http.post(this.env.API_URL + '/createUser', { name: name, firstname: firstname, mail: mail, phone: phone, password: password }
     ).subscribe((data: any) => {
-      console.log("data error : ")
-      console.log(data.error)
+      //console.log("data error : ")
+      //console.log(data.error)
       // If returned data with the POST request is valid log the user in
       if ('error' in data) {
         this.alertService.presentToast("Votre compte à été créer avec succès");
@@ -141,8 +141,8 @@ export class AuthService {
       }
 
     }, ((error: any) => {
-      console.log("data error : ")
-      console.log(error.error.error)
+      //console.log("data error : ")
+      //console.log(error.error.error)
       // Managed by the API error
       if ('error' in error.error) {
         this.alertService.presentToast(error.error.message);
@@ -191,4 +191,6 @@ export class AuthService {
       }
     );
   }
+
+
 }

@@ -32,7 +32,6 @@ export class SetProfilePage implements OnInit {
     this.password = "bonjour"
     this.confirmpassword = "bonjour"
     //this.navCtrl.navigateRoot(['./login']);
-   
   }
 
   tabs() {

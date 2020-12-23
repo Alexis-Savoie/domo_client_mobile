@@ -1,0 +1,45 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-title>
+			<h2>
+				<span>Devenir premium</span>
+			</h2>
+		</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content class="bg_color">
+
+	<div class="form">
+		<ion-list lines="none">
+
+
+			<h2>Info Payement</h2>
+
+			<ion-item lines="none" class="animated slideInRight delay_1">
+				<ion-label position="stacked">Carte</ion-label>
+				<ion-input type="cc-number" [(ngModel)]="number" placeholder="Numéro de carte"></ion-input> 
+			</ion-item>
+
+			<ion-item lines="none" class="animated slideInRight delay_2">
+				<ion-label position="stacked">Mois d'expiration</ion-label>
+				<ion-input type="cc-exp-month" [(ngModel)]="expMonth" placeholder="Requis (ex: 3 or 11)"></ion-input>
+			</ion-item>
+
+			<ion-item lines="none" class="animated slideInRight delay_2">
+				<ion-label position="stacked">Année d'expiration</ion-label>
+				<ion-input type="cc-exp-year" [(ngModel)]="expYear" placeholder="Requis  (ex: 2010)"></ion-input>
+			</ion-item>
+
+			<ion-item lines="none" class="animated slideInRight delay_2">
+				<ion-label position="stacked">Sécurité</ion-label>
+				<ion-input type="cc-csc" [(ngModel)]="cvc" placeholder="CVV à 3 chiffres"></ion-input>
+			</ion-item>
+
+			<ion-button slot="end" size="large" shape="round" class="btn" (click)="checkout()">Payer 1€ (1 mois)</ion-button>
+
+
+		</ion-list>
+	</div>
+
+</ion-content>
